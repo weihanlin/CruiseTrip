@@ -16,12 +16,13 @@ import java.util.concurrent.Executors;
 
 @Database(entities = {User.class, Itinerary.class, SpecialActivity.class,
         Room.class, Reservation.class, Service.class, RoomService.class},
-        version = 2, exportSchema = false)
+        version = 3, exportSchema = false)
 @TypeConverters({Converters.class})
 public abstract class CruiseDatabase extends RoomDatabase {
     public abstract UsersDao usersDao();
     public abstract ItinerariesDao itinerariesDao();
     public abstract RoomDao roomDao();
+    public abstract SADao saDao();
 
     private static volatile CruiseDatabase INSTANCE;
     private static final int NUMBER_OF_THREADS = 4;
@@ -55,7 +56,9 @@ public abstract class CruiseDatabase extends RoomDatabase {
                 UsersDao dao = INSTANCE.usersDao();
                 ItinerariesDao itinerariesDao = INSTANCE.itinerariesDao();
                 RoomDao roomDao = INSTANCE.roomDao();
+                SADao saDao = INSTANCE.saDao();
 
+                saDao.deleteAll();
                 roomDao.deleteAll();
                 dao.deleteAll();
                 itinerariesDao.deleteAll();
@@ -74,6 +77,8 @@ public abstract class CruiseDatabase extends RoomDatabase {
                 roomDao.insert(new Room(2,"Sea",1));
                 roomDao.insert(new Room(3,"Sea",1));
                 roomDao.bookRoom(1,2);
+                saDao.insert(new SpecialActivity(1,"KTV",true,true,1));
+                saDao.insert(new SpecialActivity(2,"KTV",true,true,null));
 
 
 

@@ -17,5 +17,5 @@ public interface SADao {
     void deleteAll();
 
     @Query("SELECT * FROM SpecialActivity")
-    LiveData<List<Itinerary>> getAllActivities();
+    LiveData<List<SpecialActivity>> getAllActivities();
 }

@@ -3,11 +3,13 @@ package com.example.cruisetrip.database;
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.ForeignKey;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 import java.util.Date;
 
-@Entity
+@Entity(foreignKeys = {@ForeignKey(entity = Itinerary.class, parentColumns = "id", childColumns = "itinerary_id")})
 public class SpecialActivity {
 
     @PrimaryKey(autoGenerate = true)
@@ -34,7 +36,20 @@ public class SpecialActivity {
     @ColumnInfo
     private Date start;
 
+    @ColumnInfo
+    private Integer itinerary_id;
+
+
     public SpecialActivity(@NonNull String title, boolean onboard, boolean reservation) {
+        this.title = title;
+        this.onboard = onboard;
+        this.reservation = reservation;
+    }
+
+    @Ignore
+    public SpecialActivity(int id, @NonNull String title, boolean onboard, boolean reservation, Integer itinerary_id) {
+        this.id = id;
+        this.itinerary_id = itinerary_id;
         this.title = title;
         this.onboard = onboard;
         this.reservation = reservation;
@@ -95,5 +110,13 @@ public class SpecialActivity {
 
     public void setStart(Date start) {
         this.start = start;
+    }
+
+    public Integer getItinerary_id() {
+        return itinerary_id;
+    }
+
+    public void setItinerary_id(Integer itinerary_id) {
+        this.itinerary_id = itinerary_id;
     }
 }

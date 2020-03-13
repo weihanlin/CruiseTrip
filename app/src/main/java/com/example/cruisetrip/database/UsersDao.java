@@ -1,5 +1,6 @@
 package com.example.cruisetrip.database;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
@@ -17,6 +18,6 @@ public interface UsersDao {
     void deleteAll();
 
     @Query("SELECT * FROM User")
-    List<User> getAllUsers();
+    LiveData<List<User>> getAllUsers();
 
 }

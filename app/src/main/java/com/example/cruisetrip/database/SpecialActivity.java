@@ -44,6 +44,10 @@ public class SpecialActivity {
         return id;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
     @NonNull
     public String getTitle() {
         return title;

@@ -30,4 +30,28 @@ public class Reservation {
     public void setNumberPeople(int numberPeople) {
         this.numberPeople = numberPeople;
     }
+
+    public int getUser_id() {
+        return user_id;
+    }
+
+    public int getItinerary_id() {
+        return itinerary_id;
+    }
+
+    public int getActivity_id() {
+        return activity_id;
+    }
+
+    public void setUser_id(int user_id) {
+        this.user_id = user_id;
+    }
+
+    public void setItinerary_id(int itinerary_id) {
+        this.itinerary_id = itinerary_id;
+    }
+
+    public void setActivity_id(int activity_id) {
+        this.activity_id = activity_id;
+    }
 }

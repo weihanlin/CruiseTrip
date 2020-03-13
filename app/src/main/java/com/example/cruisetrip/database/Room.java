@@ -3,6 +3,7 @@ package com.example.cruisetrip.database;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 @Entity(foreignKeys = {
@@ -16,14 +17,27 @@ public class Room {
     private String type;
 
     @ColumnInfo
-    private boolean state;
+    private boolean state = true;
 
     @ColumnInfo
     private int itinerary_id;
 
     @ColumnInfo
-    private int user_id;
+    private Integer user_id;
 
+    public Room(int id, String type, int itinerary_id){
+        this.id = id;
+        this.type = type;
+        this.itinerary_id = itinerary_id;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getType() {
         return type;
@@ -49,11 +63,11 @@ public class Room {
         this.itinerary_id = itinerary_id;
     }
 
-    public int getUser_id() {
+    public Integer getUser_id() {
         return user_id;
     }
 
-    public void setUser_id(int user_id) {
+    public void setUser_id(Integer user_id) {
         this.user_id = user_id;
     }
 }

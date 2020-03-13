@@ -14,7 +14,8 @@ public class User {
     @ColumnInfo
     private String name;
 
-    public User(String name) {
+    public User(int id, String name) {
+        this.id = id;
         this.name = name;
     }
 
@@ -25,5 +26,9 @@ public class User {
     @NonNull
     public String getName() {
         return name;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

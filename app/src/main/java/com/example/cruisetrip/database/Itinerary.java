@@ -3,6 +3,7 @@ package com.example.cruisetrip.database;
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 import java.util.Date;
@@ -22,7 +23,9 @@ public class Itinerary {
     @ColumnInfo
     private int days;
 
-    public Itinerary(String destination, Date startDate, int days) {
+    @Ignore
+    public Itinerary(int id, String destination, Date startDate, int days) {
+        this.id = id;
         this.destination = destination;
         this.startDate = startDate;
         this.days = days;
@@ -59,5 +62,9 @@ public class Itinerary {
 
     public void setDays(int days) {
         this.days = days;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

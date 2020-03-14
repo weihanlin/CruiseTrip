@@ -19,6 +19,11 @@ public class Reservation {
     @ColumnInfo
     private int numberPeople;
 
+    public Reservation(int user_id, int activity_id){
+        this.activity_id = activity_id;
+        this.user_id = user_id;
+    }
+
     public int getNumberPeople() {
         return numberPeople;
     }

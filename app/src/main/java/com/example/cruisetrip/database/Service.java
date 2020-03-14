@@ -2,6 +2,7 @@ package com.example.cruisetrip.database;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 @Entity
@@ -17,6 +18,13 @@ public class Service {
 
     public Service(String title) {
         this.title = title;
+    }
+
+    @Ignore
+    public Service(int id, String title, double price) {
+        this.id = id;
+        this.title = title;
+        this.price = price;
     }
 
     public String getTitle() {

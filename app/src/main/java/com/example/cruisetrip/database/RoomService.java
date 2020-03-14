@@ -15,6 +15,11 @@ public class RoomService {
     @ColumnInfo
     private int room_id;
 
+    public RoomService(int service_id, int room_id) {
+        this.service_id = service_id;
+        this.room_id = room_id;
+    }
+
     public int getService_id() {
         return service_id;
     }

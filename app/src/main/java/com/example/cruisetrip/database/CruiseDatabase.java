@@ -23,6 +23,9 @@ public abstract class CruiseDatabase extends RoomDatabase {
     public abstract ItinerariesDao itinerariesDao();
     public abstract RoomDao roomDao();
     public abstract SADao saDao();
+    public abstract ReservationDao reservationDao();
+    public abstract RoomServiceDao roomServiceDao();
+    public abstract ServiceDao serviceDao();
 
     private static volatile CruiseDatabase INSTANCE;
     private static final int NUMBER_OF_THREADS = 4;
@@ -57,7 +60,14 @@ public abstract class CruiseDatabase extends RoomDatabase {
                 ItinerariesDao itinerariesDao = INSTANCE.itinerariesDao();
                 RoomDao roomDao = INSTANCE.roomDao();
                 SADao saDao = INSTANCE.saDao();
+                ServiceDao serviceDao = INSTANCE.serviceDao();
+                RoomServiceDao roomServiceDao = INSTANCE.roomServiceDao();
+                ReservationDao reservationDao = INSTANCE.reservationDao();
 
+
+                reservationDao.deleteAll();
+                roomServiceDao.deleteAll();
+                serviceDao.deleteAll();
                 saDao.deleteAll();
                 roomDao.deleteAll();
                 dao.deleteAll();
@@ -79,6 +89,11 @@ public abstract class CruiseDatabase extends RoomDatabase {
                 roomDao.bookRoom(1,2);
                 saDao.insert(new SpecialActivity(1,"KTV",true,true,1));
                 saDao.insert(new SpecialActivity(2,"KTV",true,true,null));
+                serviceDao.insert(new Service(1, "Morning Call",10.0));
+                serviceDao.insert(new Service(2, "Food Delivery",10.3));
+                roomServiceDao.insert(new RoomService(1,1));
+                reservationDao.insert(new Reservation(1,1));
+
 
 
 

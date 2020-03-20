@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">CruiseTrip</string>
+    <string name="welcome_title">Welcome To Disney Cruise Line</string>
 </resources>

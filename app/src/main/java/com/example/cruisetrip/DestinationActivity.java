@@ -1,37 +1,37 @@
 package com.example.cruisetrip;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
-import android.media.Image;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.ImageView;
+
+import com.example.cruisetrip.database.Itinerary;
+
+import java.util.List;
 
 public class DestinationActivity extends AppCompatActivity {
+
+    private ItineraryViewModel itineraryViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_destination_list);
 
-        ImageView imgAlaska = (ImageView) findViewById(R.id.alaskaImg);
-        ImageView imgEuro = (ImageView) findViewById(R.id.euroImg);
+        RecyclerView recyclerView = findViewById(R.id.recyclerview);
+        ItinerariesAdapter itinerariesAdapter = new ItinerariesAdapter(this);
+        recyclerView.setAdapter(itinerariesAdapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        imgAlaska.setOnClickListener(new View.OnClickListener() {
+        itineraryViewModel = new ItineraryViewModel(this.getApplication());
+        itineraryViewModel.getAllItineraries().observe(this, new Observer<List<Itinerary>>() {
             @Override
-            public void onClick(View v) {
-                Intent i = new Intent(DestinationActivity.this, AlaskaActivity.class);
-                startActivity(i);
+            public void onChanged(List<Itinerary> itineraries) {
+                itinerariesAdapter.setItineraries(itineraries);
             }
         });
 
-        imgEuro.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(DestinationActivity.this, EuropeActivity.class);
-                startActivity(i);
-            }
-        });
     }
 }

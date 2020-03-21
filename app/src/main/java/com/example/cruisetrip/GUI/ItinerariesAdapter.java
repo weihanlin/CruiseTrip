@@ -1,4 +1,4 @@
-package com.example.cruisetrip;
+package com.example.cruisetrip.GUI;
 
 import android.content.Context;
 import android.content.Intent;
@@ -11,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.cruisetrip.R;
 import com.example.cruisetrip.database.Itinerary;
 
 import java.util.List;

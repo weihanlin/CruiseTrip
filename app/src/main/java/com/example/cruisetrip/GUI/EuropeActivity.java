@@ -1,8 +1,10 @@
-package com.example.cruisetrip;
+package com.example.cruisetrip.GUI;
+
+import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.os.Bundle;
+import com.example.cruisetrip.R;
 
 public class EuropeActivity extends AppCompatActivity {
 

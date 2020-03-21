@@ -17,7 +17,7 @@ public class WelcomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
 
-        new CountDownTimer(4000, 1000) {
+        new CountDownTimer(1000, 1000) {
 
             TextView textView = (TextView) findViewById(R.id.loading);
 

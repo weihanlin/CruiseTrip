@@ -2,7 +2,6 @@ package com.example.cruisetrip.authentication;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -17,8 +16,10 @@ public class LoginActivity extends AppCompatActivity {
     private EditText usernameEditText;
     private EditText passwordEditText;
     private Button loginButton;
+    private Button registerButton;
 //    private ProgressBar loadingProgressBar;
     private TextView info;
+    private TextView title;
 
     private int counter = 5;
 
@@ -27,23 +28,35 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        usernameEditText = findViewById(R.id.username);
-        passwordEditText = findViewById(R.id.password);
-        loginButton = findViewById(R.id.login);
-        info = findViewById(R.id.infoTxt);
+        usernameEditText = findViewById(R.id.username_login);
+        passwordEditText = findViewById(R.id.password_login);
+        loginButton = findViewById(R.id.loginBtn);
+        registerButton = findViewById(R.id.registerBtn);
+        info = findViewById(R.id.infoTxt_login);
+        title = findViewById(R.id.title_login);
 //        loadingProgressBar = findViewById(R.id.loading);
 
-        loginButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                validate(usernameEditText.getText().toString(),
-                        passwordEditText.getText().toString());
-            }
+        if(getIntent().getBooleanExtra("registerStatus", false)) {
+            title.setText("Register Success! \n" +
+                    "Please log in!");
+        }
+
+        loginButton.setOnClickListener(v -> {
+            // Validating
+            validate(usernameEditText.getText().toString(), passwordEditText.getText().toString());
+        });
+
+        registerButton.setOnClickListener(v -> {
+            Intent i = new Intent(LoginActivity.this, RegisterActivity.class);
+            startActivity(i);
         });
     }
 
+    // Validate the username and password
     private void validate (String username, String password) {
 
+        // True : jump to the destination page.
+        // False : attempts - 1. When attempts = 0, the log in button will disable
         if (username.equals("admin") && password.equals("1234")) {
             Intent i = new Intent(LoginActivity.this, DestinationActivity.class);
             startActivity(i);

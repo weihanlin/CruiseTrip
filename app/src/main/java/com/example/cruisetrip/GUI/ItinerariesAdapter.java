@@ -20,8 +20,10 @@ public class ItinerariesAdapter extends RecyclerView.Adapter<ItinerariesAdapter.
 
     private final LayoutInflater layoutInflater;
     private List<Itinerary> mItineraries;
+    private Context context;
 
     public ItinerariesAdapter(Context context) {
+        this.context = context;
         this.layoutInflater = LayoutInflater.from(context);
     }
 
@@ -36,7 +38,11 @@ public class ItinerariesAdapter extends RecyclerView.Adapter<ItinerariesAdapter.
     public void onBindViewHolder(@NonNull ItineraryHolder holder, int position) {
         if(mItineraries != null){
             Itinerary itinerary = mItineraries.get(position);
-            holder.desImg.setImageResource(R.drawable.alaska_trip);
+
+
+
+            holder.desImg.setImageDrawable(context.getDrawable(context.getResources().getIdentifier(itinerary.getImage(),"drawable",context.getPackageName())));
+
             holder.destination.setText(itinerary.getDestination());
 
             holder.destination.setOnClickListener(new View.OnClickListener() {

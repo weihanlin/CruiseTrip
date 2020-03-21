@@ -9,6 +9,8 @@ import androidx.room.RoomDatabase;
 import androidx.room.TypeConverters;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
+import com.example.cruisetrip.R;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.concurrent.ExecutorService;
@@ -76,8 +78,8 @@ public abstract class CruiseDatabase extends RoomDatabase {
                 SimpleDateFormat fmt = new SimpleDateFormat("yyyy-mm-dd");
                 try {
 
-                    itinerariesDao.insert(new Itinerary(1,"Tokyo", fmt.parse("2020-05-20"), 5));
-                    itinerariesDao.insert(new Itinerary(2,"Canada", fmt.parse("2020-09-20"), 5));
+                    itinerariesDao.insert(new Itinerary(1,"Tokyo", fmt.parse("2020-05-20"), 5, R.drawable.alaska_trip));
+                    itinerariesDao.insert(new Itinerary(2,"Canada", fmt.parse("2020-09-20"), 5, R.drawable.europe_trip));
 
                 } catch (ParseException e) {}
 

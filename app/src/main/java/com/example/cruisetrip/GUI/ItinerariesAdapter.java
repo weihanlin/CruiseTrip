@@ -36,7 +36,7 @@ public class ItinerariesAdapter extends RecyclerView.Adapter<ItinerariesAdapter.
     public void onBindViewHolder(@NonNull ItineraryHolder holder, int position) {
         if(mItineraries != null){
             Itinerary itinerary = mItineraries.get(position);
-            holder.desImg.setImageResource(R.drawable.alaska_trip);
+            holder.desImg.setImageResource(itinerary.getImageID());
             holder.destination.setText(itinerary.getDestination());
 
             holder.destination.setOnClickListener(new View.OnClickListener() {

@@ -23,12 +23,16 @@ public class Itinerary {
     @ColumnInfo
     private int days;
 
+    @ColumnInfo
+    private int imageID;
+
     @Ignore
-    public Itinerary(int id, String destination, Date startDate, int days) {
+    public Itinerary(int id, String destination, Date startDate, int days, int image) {
         this.id = id;
         this.destination = destination;
         this.startDate = startDate;
         this.days = days;
+        this.imageID = image;
     }
 
     public Itinerary(String destination) {
@@ -66,5 +70,13 @@ public class Itinerary {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public int getImageID() {
+        return imageID;
+    }
+
+    public void setImageID(int image) {
+        this.imageID = image;
     }
 }

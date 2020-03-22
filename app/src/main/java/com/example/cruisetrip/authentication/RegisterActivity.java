@@ -8,10 +8,14 @@ import android.widget.EditText;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.cruisetrip.R;
+import com.example.cruisetrip.database.User;
+import com.example.cruisetrip.database.UsersRepository;
 
+import java.sql.SQLException;
 import java.util.Base64;
 
 public class RegisterActivity extends AppCompatActivity {
+    private User newUser;
 
     private EditText usernameEditText;
     private EditText passwordEditText;
@@ -38,6 +42,14 @@ public class RegisterActivity extends AppCompatActivity {
         this.hashedPassword = Base64.getEncoder().encodeToString(passwordEditText.getText().toString().getBytes());
         this.email = emailEditText.getText().toString();
         this.phoneNumber = phoneNumberEditText.getText().toString();
+
+        try {
+            UsersRepository usersRepository = new UsersRepository(this.getApplication());
+            newUser = new User(username, hashedPassword, email, phoneNumber);
+            usersRepository.insert(newUser);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
 
         signUpBtn = findViewById(R.id.signUpBtn_register);
         signUpBtn.setOnClickListener(v -> {

@@ -81,8 +81,8 @@ public abstract class CruiseDatabase extends RoomDatabase {
 
                 } catch (ParseException e) {}
 
-                dao.insert(new User(1,"John"));
-                dao.insert(new User(2,"Wick"));
+                dao.insert(new User("husadhui", "hsuaidhuisadbas", "1@gmail.com", "7886542234"));
+                dao.insert(new User("hdsuaih", "hasduihdiasdnashdi", "2@gmail.com", "7884587288"));
                 roomDao.insert(new Room(1,"Sea",2));
                 roomDao.insert(new Room(2,"Sea",1));
                 roomDao.insert(new Room(3,"Sea",1));

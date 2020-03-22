@@ -7,7 +7,7 @@ import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.cruisetrip.ItineraryViewModel;
+import com.example.cruisetrip.model.ItineraryViewModel;
 import com.example.cruisetrip.R;
 import com.example.cruisetrip.database.Itinerary;
 

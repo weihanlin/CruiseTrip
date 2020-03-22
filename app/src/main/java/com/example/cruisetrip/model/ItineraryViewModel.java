@@ -1,4 +1,4 @@
-package com.example.cruisetrip;
+package com.example.cruisetrip.model;
 
 import android.app.Application;
 

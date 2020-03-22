@@ -10,7 +10,8 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 
-import com.example.cruisetrip.ItineraryViewModel;
+import com.example.cruisetrip.model.DaysAdapter;
+import com.example.cruisetrip.model.ItineraryViewModel;
 import com.example.cruisetrip.R;
 import com.example.cruisetrip.database.SpecialActivity;
 

@@ -1,4 +1,4 @@
-package com.example.cruisetrip.GUI;
+package com.example.cruisetrip.model;
 
 import android.app.Activity;
 import android.view.LayoutInflater;

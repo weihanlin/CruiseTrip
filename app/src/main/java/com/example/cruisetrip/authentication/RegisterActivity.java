@@ -40,7 +40,6 @@ public class RegisterActivity extends AppCompatActivity {
         this.phoneNumber = phoneNumberEditText.getText().toString();
 
         signUpBtn = findViewById(R.id.signUpBtn_register);
-
         signUpBtn.setOnClickListener(v -> {
             Intent i = new Intent(RegisterActivity.this, LoginActivity.class);
             i.putExtra("registerStatus", true);

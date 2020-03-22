@@ -2,6 +2,7 @@ package com.example.cruisetrip.GUI;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,10 +22,12 @@ public class ItinerariesAdapter extends RecyclerView.Adapter<ItinerariesAdapter.
     private final LayoutInflater layoutInflater;
     private List<Itinerary> mItineraries;
     private Context context;
+    private SharedPreferences sharedPreferences;
 
     public ItinerariesAdapter(Context context) {
         this.context = context;
         this.layoutInflater = LayoutInflater.from(context);
+        sharedPreferences = context.getSharedPreferences("SelectPref", Context.MODE_PRIVATE);
     }
 
     @NonNull
@@ -39,8 +42,6 @@ public class ItinerariesAdapter extends RecyclerView.Adapter<ItinerariesAdapter.
         if(mItineraries != null){
             Itinerary itinerary = mItineraries.get(position);
 
-
-
             holder.desImg.setImageDrawable(context.getDrawable(context.getResources().getIdentifier(itinerary.getImage(),"drawable",context.getPackageName())));
 
             holder.destination.setText(itinerary.getDestination());
@@ -48,7 +49,10 @@ public class ItinerariesAdapter extends RecyclerView.Adapter<ItinerariesAdapter.
             holder.destination.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent i = new Intent(v.getContext(), AlaskaActivity.class);
+                    sharedPreferences.edit().putInt("SELIT",itinerary.getId()).apply();
+                    sharedPreferences.edit().putString("ITNAME",itinerary.getDestination()).apply();
+
+                    Intent i = new Intent(v.getContext(), ActionActivity.class);
                     v.getContext().startActivity(i);
                 }
             });

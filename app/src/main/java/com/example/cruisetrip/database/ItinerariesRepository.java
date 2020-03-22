@@ -45,4 +45,8 @@ public class ItinerariesRepository {
         return saDao.getPortCall(itinerary.getId(), false);
     }
 
+    public LiveData<List<SpecialActivity>> getDays(int itineraryID) {
+        return saDao.getDays(itineraryID);
+    }
+
 }

@@ -11,8 +11,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".authentication.RegisterActivity"></activity>
         <activity android:name=".authentication.LoginActivity" />
-        <activity android:name=".GUI.EuropeActivity" />
-        <activity android:name=".GUI.AlaskaActivity" />
+        <activity android:name=".GUI.ActionActivity" />
         <activity android:name=".GUI.DestinationActivity" />
         <activity android:name=".GUI.WelcomeActivity">
             <intent-filter>

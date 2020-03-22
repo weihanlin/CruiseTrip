@@ -24,4 +24,7 @@ public interface SADao {
 
     @Query("SELECT * FROM SpecialActivity WHERE onboard = :onboard AND itinerary_id = :itinerary_id")
     LiveData<List<SpecialActivity>> getPortCall(int itinerary_id, boolean onboard);
+
+    @Query("SELECT * FROM SpecialActivity WHERE itinerary_id = :itinerary AND title LIKE 'Day%'")
+    LiveData<List<SpecialActivity>> getDays(int itinerary);
 }

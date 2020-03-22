@@ -1,4 +1,4 @@
-package com.example.cruisetrip.GUI;
+package com.example.cruisetrip;
 
 import android.app.Application;
 
@@ -8,6 +8,7 @@ import androidx.lifecycle.LiveData;
 
 import com.example.cruisetrip.database.ItinerariesRepository;
 import com.example.cruisetrip.database.Itinerary;
+import com.example.cruisetrip.database.SpecialActivity;
 
 import java.util.List;
 
@@ -25,5 +26,10 @@ public class ItineraryViewModel extends AndroidViewModel {
     public LiveData<List<Itinerary>> getAllItineraries() {
         return allItineraries;
     }
+
+    public LiveData<List<SpecialActivity>> getDays(int itineraryID) {
+        return itinerariesRepository.getDays(itineraryID);
+    }
+
 
 }

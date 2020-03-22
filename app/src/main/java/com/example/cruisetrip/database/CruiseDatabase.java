@@ -89,6 +89,12 @@ public abstract class CruiseDatabase extends RoomDatabase {
                 roomDao.bookRoom(1,2);
                 saDao.insert(new SpecialActivity(1,"KTV",true,true,1));
                 saDao.insert(new SpecialActivity(2,"KTV",true,true,null));
+
+                saDao.insert(new SpecialActivity(3,"Day 1",true,true,1));
+                saDao.insert(new SpecialActivity(4,"Day 2",true,true,1));
+                saDao.insert(new SpecialActivity(5,"Day 3",true,true,1));
+                saDao.insert(new SpecialActivity(6,"Day 4",true,true,1));
+
                 serviceDao.insert(new Service(1, "Morning Call",10.0));
                 serviceDao.insert(new Service(2, "Food Delivery",10.3));
                 roomServiceDao.insert(new RoomService(1,1));

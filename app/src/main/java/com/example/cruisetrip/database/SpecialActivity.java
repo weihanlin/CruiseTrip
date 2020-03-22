@@ -39,6 +39,9 @@ public class SpecialActivity {
     @ColumnInfo
     private Integer itinerary_id;
 
+    @ColumnInfo
+    private String description;
+
 
     public SpecialActivity(@NonNull String title, boolean onboard, boolean reservation) {
         this.title = title;
@@ -118,5 +121,13 @@ public class SpecialActivity {
 
     public void setItinerary_id(Integer itinerary_id) {
         this.itinerary_id = itinerary_id;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

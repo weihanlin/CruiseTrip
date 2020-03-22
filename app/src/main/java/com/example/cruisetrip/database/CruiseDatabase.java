@@ -16,7 +16,7 @@ import java.util.concurrent.Executors;
 
 @Database(entities = {User.class, Itinerary.class, SpecialActivity.class,
         Room.class, Reservation.class, Service.class, RoomService.class},
-        version = 3, exportSchema = false)
+        version = 10, exportSchema = false)
 @TypeConverters({Converters.class})
 public abstract class CruiseDatabase extends RoomDatabase {
     public abstract UsersDao usersDao();

@@ -2,6 +2,7 @@ package com.example.cruisetrip.database;
 
 import android.app.Application;
 
+import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
 
 import java.util.List;
@@ -12,23 +13,28 @@ public class UsersRepository {
     private ReservationDao reservationDao;
     private RoomServiceDao roomServiceDao;
     private LiveData<List<User>> allUsers;
+    private CruiseDatabase db;
 
     public UsersRepository(Application application) {
-        CruiseDatabase db = CruiseDatabase.getDatabase(application);
-        roomDao = db.roomDao();
-        usersDao = db.usersDao();
-        reservationDao = db.reservationDao();
-        roomServiceDao = db.roomServiceDao();
-        allUsers = usersDao.getAllUsers();
+        this.db = CruiseDatabase.getDatabase(application);
+//        this.roomDao = db.roomDao();
+//        this.reservationDao = db.reservationDao();
+//        this.roomServiceDao = db.roomServiceDao();
+//        this.allUsers = usersDao.getAllUsers();
     }
 
     public LiveData<List<User>> getAllUsers() {
         return allUsers;
     }
 
-    public void insert(final User user){
-        CruiseDatabase.databaseWriteExecutor.execute(() -> {
-            usersDao.insert(user);
+    public void insert(User user){
+        this.usersDao = db.usersDao();
+        CruiseDatabase.databaseWriteExecutor.execute(()->{
+            String name = user.getName();
+            String password = user.getPassword();
+            String email = user.getEmail();
+            String phone = user.getPhone();
+            this.usersDao.insert(name, password, email, phone);
         });
     }
 

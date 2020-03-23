@@ -11,8 +11,8 @@ import java.util.List;
 @Dao
 public interface UsersDao {
 
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
-    void insert(User user);
+    @Query("INSERT INTO User (name, password, email, phone) VALUES (:name, :password, :email, :phone)")
+    void insert(String name, String password, String email, String phone);
 
     @Query("DELETE FROM User")
     void deleteAll();

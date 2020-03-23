@@ -11,9 +11,6 @@ import com.example.cruisetrip.R;
 import com.example.cruisetrip.database.User;
 import com.example.cruisetrip.database.UsersRepository;
 
-import java.sql.SQLException;
-import java.util.Base64;
-
 public class RegisterActivity extends AppCompatActivity {
     private User newUser;
 
@@ -22,7 +19,7 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText emailEditText;
     private EditText phoneNumberEditText;
     private String username;
-    private String hashedPassword;
+    private String password;
     private String email;
     private String phoneNumber;
 
@@ -38,41 +35,23 @@ public class RegisterActivity extends AppCompatActivity {
         emailEditText = findViewById(R.id.email_register);
         phoneNumberEditText = findViewById(R.id.phone_register);
 
-        this.username = usernameEditText.getText().toString();
-        this.hashedPassword = Base64.getEncoder().encodeToString(passwordEditText.getText().toString().getBytes());
-        this.email = emailEditText.getText().toString();
-        this.phoneNumber = phoneNumberEditText.getText().toString();
-
-        try {
-            UsersRepository usersRepository = new UsersRepository(this.getApplication());
-            newUser = new User(username, hashedPassword, email, phoneNumber);
-            usersRepository.insert(newUser);
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-
         signUpBtn = findViewById(R.id.signUpBtn_register);
         signUpBtn.setOnClickListener(v -> {
+            this.username = usernameEditText.getText().toString();
+            this.password = passwordEditText.getText().toString();
+            this.email = emailEditText.getText().toString();
+            this.phoneNumber = phoneNumberEditText.getText().toString();
+
+            try {
+                UsersRepository usersRepository = new UsersRepository(this.getApplication());
+                newUser = new User(this.username, this.password, this.email, this.phoneNumber);
+                usersRepository.insert(newUser);
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
             Intent i = new Intent(RegisterActivity.this, LoginActivity.class);
             i.putExtra("registerStatus", true);
             startActivity(i);
         });
-    }
-
-    //Getters and setters
-    public String getUsername() {
-        return username;
-    }
-
-    public String getHashedPassword() {
-        return hashedPassword;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
     }
 }

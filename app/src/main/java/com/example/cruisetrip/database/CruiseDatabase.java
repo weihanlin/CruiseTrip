@@ -64,29 +64,28 @@ public abstract class CruiseDatabase extends RoomDatabase {
                 RoomServiceDao roomServiceDao = INSTANCE.roomServiceDao();
                 ReservationDao reservationDao = INSTANCE.reservationDao();
 
-
-                reservationDao.deleteAll();
-                roomServiceDao.deleteAll();
-                serviceDao.deleteAll();
-                saDao.deleteAll();
-                roomDao.deleteAll();
-                dao.deleteAll();
-                itinerariesDao.deleteAll();
+//                reservationDao.deleteAll();
+//                roomServiceDao.deleteAll();
+//                serviceDao.deleteAll();
+//                saDao.deleteAll();
+//                roomDao.deleteAll();
+//                dao.deleteAll();
+//                itinerariesDao.deleteAll();
 
                 SimpleDateFormat fmt = new SimpleDateFormat("yyyy-mm-dd");
                 try {
+                    itinerariesDao.insert(new Itinerary(1,"Alaska", fmt.parse("2020-05-20"), 5, "alaska_trip"));
+                    itinerariesDao.insert(new Itinerary(2,"Europe", fmt.parse("2020-09-20"), 5, "europe_trip"));
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
 
-                    itinerariesDao.insert(new Itinerary(1,"Tokyo", fmt.parse("2020-05-20"), 5, "alaska_trip"));
-                    itinerariesDao.insert(new Itinerary(2,"Canada", fmt.parse("2020-09-20"), 5, "europe_trip"));
-
-                } catch (ParseException e) {}
-
-                dao.insert(new User("husadhui", "hsuaidhuisadbas", "1@gmail.com", "7886542234"));
-                dao.insert(new User("hdsuaih", "hasduihdiasdnashdi", "2@gmail.com", "7884587288"));
+                dao.insert("admin", "admin123", "1@gmail.com", "7886542234");
+                dao.insert("another", "other123", "2@gmail.com", "7884587288");
                 roomDao.insert(new Room(1,"Sea",2));
                 roomDao.insert(new Room(2,"Sea",1));
                 roomDao.insert(new Room(3,"Sea",1));
-                roomDao.bookRoom(1,2);
+//                roomDao.bookRoom(1,2);
                 saDao.insert(new SpecialActivity(1,"KTV",true,true,1));
                 saDao.insert(new SpecialActivity(2,"KTV",true,true,null));
 
@@ -98,10 +97,7 @@ public abstract class CruiseDatabase extends RoomDatabase {
                 serviceDao.insert(new Service(1, "Morning Call",10.0));
                 serviceDao.insert(new Service(2, "Food Delivery",10.3));
                 roomServiceDao.insert(new RoomService(1,1));
-                reservationDao.insert(new Reservation(1,1));
-
-
-
+//                reservationDao.insert(new Reservation(1,1));
 
                 Log.d("DATABASE","AFTER INSERT DATA");
             });

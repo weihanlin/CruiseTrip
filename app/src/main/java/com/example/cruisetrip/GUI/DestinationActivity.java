@@ -7,6 +7,7 @@ import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.cruisetrip.model.ItinerariesAdapter;
 import com.example.cruisetrip.model.ItineraryViewModel;
 import com.example.cruisetrip.R;
 import com.example.cruisetrip.database.Itinerary;
@@ -28,12 +29,6 @@ public class DestinationActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         itineraryViewModel = new ItineraryViewModel(this.getApplication());
-        itineraryViewModel.getAllItineraries().observe(this, new Observer<List<Itinerary>>() {
-            @Override
-            public void onChanged(List<Itinerary> itineraries) {
-                itinerariesAdapter.setItineraries(itineraries);
-            }
-        });
-
+        itineraryViewModel.getAllItineraries().observe(this, itinerariesAdapter::setItineraries);
     }
 }

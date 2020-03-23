@@ -1,4 +1,4 @@
-package com.example.cruisetrip.GUI;
+package com.example.cruisetrip.model;
 
 import android.content.Context;
 import android.content.Intent;
@@ -12,6 +12,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.cruisetrip.GUI.ActionActivity;
 import com.example.cruisetrip.R;
 import com.example.cruisetrip.database.Itinerary;
 
@@ -46,15 +47,12 @@ public class ItinerariesAdapter extends RecyclerView.Adapter<ItinerariesAdapter.
 
             holder.destination.setText(itinerary.getDestination());
 
-            holder.destination.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    sharedPreferences.edit().putInt("SELIT",itinerary.getId()).apply();
-                    sharedPreferences.edit().putString("ITNAME",itinerary.getDestination()).apply();
+            holder.destination.setOnClickListener(v -> {
+                sharedPreferences.edit().putInt("SELIT",itinerary.getId()).apply();
+                sharedPreferences.edit().putString("ITNAME",itinerary.getDestination()).apply();
 
-                    Intent i = new Intent(v.getContext(), ActionActivity.class);
-                    v.getContext().startActivity(i);
-                }
+                Intent i = new Intent(v.getContext(), ActionActivity.class);
+                v.getContext().startActivity(i);
             });
         }
         else{

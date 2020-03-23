@@ -9,11 +9,15 @@ import androidx.room.PrimaryKey;
 public class User {
 
     @PrimaryKey(autoGenerate = true)
-    private int id;
+    private int id = 1;
 
     @NonNull
     @ColumnInfo
     private String name;
+
+    @NonNull
+    @ColumnInfo
+    private String password;
 
     @ColumnInfo
     private String email;
@@ -21,12 +25,9 @@ public class User {
     @ColumnInfo
     private String phone;
 
-    @ColumnInfo
-    private String password;
-
-    public User(String name, String hashedPassword ,String email, String phone) {
+    public User(String name, String password, String email, String phone) {
         this.name = name;
-        this.password = hashedPassword;
+        this.password = password;
         this.email = email;
         this.phone = phone;
     }
@@ -40,6 +41,11 @@ public class User {
         return name;
     }
 
+    @NonNull
+    public String getPassword() {
+        return password;
+    }
+
     public String getEmail() {
         return email;
     }
@@ -48,7 +54,23 @@ public class User {
         return phone;
     }
 
-    public String getPassword() {
-        return password;
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setName(@NonNull String name) {
+        this.name = name;
+    }
+
+    public void setPassword(@NonNull String password) {
+        this.password = password;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 }

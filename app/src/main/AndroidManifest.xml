@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.cruisetrip">
+    package="com.example.cruiseTrip">
 
     <application
         android:allowBackup="true"
@@ -9,11 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".authentication.RegisterActivity"></activity>
+        <activity android:name=".roomBooking.ReservationActivity"></activity>
+        <activity android:name=".authentication.RegisterActivity" />
         <activity android:name=".authentication.LoginActivity" />
-        <activity android:name=".GUI.ActionActivity" />
-        <activity android:name=".GUI.DestinationActivity" />
-        <activity android:name=".GUI.WelcomeActivity">
+        <activity android:name=".ui.ActionActivity" />
+        <activity android:name=".ui.DestinationActivity" />
+        <activity android:name=".ui.WelcomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

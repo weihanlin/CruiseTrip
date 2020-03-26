@@ -7,10 +7,15 @@
     <string name="action_sign_in">Sign in</string>
     <string name="action_sign_up">Sign Up</string>
     <string name="action_sign_in_short">Sign in</string>
-    <string name="welcome">"Welcome !"</string>
+    <string name="login_title">"Welcome\nHave an account? Sign in"</string>
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
     <string name="Login_msg">Please log in!</string>
     <string name="Register_success">Register Success! \n</string>
+    <string name="reservation_title">Which room would you like?</string>
+    <string name="reservation_item1">Sail away in a generous-sized stateroom with a nautical motif and porthole mirror (no exterior view).</string>
+    <string name="reservation_item2">Unwind in roomy quarters adorned in a charming nautical motif, with a real porthole window—or possibly 2!</string>
+    <string name="reservation_item3">These are our most spacious non-Concierge staterooms, each with a private verandah (some with partial views).</string>
+    <string name="reservation_item4">Our most luxurious accommodations feature a large private verandah and premium amenities and services.</string>
 </resources>

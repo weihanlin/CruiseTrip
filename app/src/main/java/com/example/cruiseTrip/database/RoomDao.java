@@ -6,6 +6,8 @@ import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 
+import com.example.cruiseTrip.entity.Room;
+
 import java.util.List;
 
 @Dao
@@ -16,8 +18,11 @@ public interface RoomDao {
     @Query("DELETE FROM Room")
     void deleteAll();
 
-    @Query("SELECT * FROM Room WHERE itinerary_id = :itinerary_id")
-    LiveData<List<Room>> getAllRooms(int itinerary_id);
+    @Query("SELECT * FROM room")
+    LiveData<List<Room>> getAllRooms();
+
+    @Query("UPDATE Room SET itinerary_id = :itinerary_id WHERE id = :id")
+    int updateItinerary(int id, int itinerary_id);
 
     @Query("UPDATE Room SET user_id = :user_id, state = 0 WHERE id = :id")
     int bookRoom(int id, int user_id);

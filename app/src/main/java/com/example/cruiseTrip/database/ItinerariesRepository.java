@@ -4,6 +4,8 @@ import android.app.Application;
 
 import androidx.lifecycle.LiveData;
 
+import com.example.cruiseTrip.entity.Itinerary;
+
 import java.util.List;
 
 public class ItinerariesRepository {
@@ -27,12 +29,6 @@ public class ItinerariesRepository {
     //Query all itineraries
     public LiveData<List<Itinerary>> getAllItineraries(){
         return itinerariesDao.getAllItineraries();
-    }
-
-
-    //Query all room for specific itinerary
-    public LiveData<List<Room>> getAllRoomByItinerary(Itinerary itinerary) {
-        return roomDao.getAllRooms(itinerary.getId());
     }
 
     //Query all on board activities for specific itinerary

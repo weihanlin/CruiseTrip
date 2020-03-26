@@ -7,6 +7,8 @@ import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 
+import com.example.cruiseTrip.entity.Reservation;
+
 import java.util.List;
 
 @Dao

@@ -1,4 +1,4 @@
-package com.example.cruiseTrip.database;
+package com.example.cruiseTrip.adapters;
 
 import androidx.room.TypeConverter;
 

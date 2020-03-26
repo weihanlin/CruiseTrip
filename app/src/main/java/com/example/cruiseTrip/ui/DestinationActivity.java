@@ -6,8 +6,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.cruiseTrip.model.ItinerariesAdapter;
-import com.example.cruiseTrip.model.ItineraryViewModel;
+import com.example.cruiseTrip.adapters.ItinerariesAdapter;
+import com.example.cruiseTrip.adapters.ItineraryViewModel;
 import com.example.cruiseTrip.R;
 
 public class DestinationActivity extends AppCompatActivity {

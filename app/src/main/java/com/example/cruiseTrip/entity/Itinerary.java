@@ -1,4 +1,4 @@
-package com.example.cruiseTrip.database;
+package com.example.cruiseTrip.entity;
 
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;

@@ -8,11 +8,9 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.cruiseTrip.database.Reservation;
-import com.example.cruiseTrip.roomBooking.ReservationActivity;
 import com.example.cruiseTrip.ui.DestinationActivity;
 import com.example.cruiseTrip.R;
-import com.example.cruiseTrip.database.User;
+import com.example.cruiseTrip.entity.User;
 import com.example.cruiseTrip.database.UsersRepository;
 
 import java.util.List;
@@ -69,7 +67,7 @@ public class LoginActivity extends AppCompatActivity {
     private void validate (String name, String password) {
 
         usersRepository = new UsersRepository(this.getApplication());
-        usersRepository.getAllUsers().observe(this, usersList -> {
+        usersRepository.getAllUsers().observe(this, userList -> {
             Boolean identifier = false;
             if(usersList != null && !usersList.isEmpty()) {
                 for (User user : usersList) {

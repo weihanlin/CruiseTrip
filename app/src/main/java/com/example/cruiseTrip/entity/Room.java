@@ -1,4 +1,4 @@
-package com.example.cruiseTrip.database;
+package com.example.cruiseTrip.entity;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
@@ -9,6 +9,7 @@ import androidx.room.PrimaryKey;
         @ForeignKey(entity = Itinerary.class, parentColumns = "id", childColumns = "itinerary_id"),
         @ForeignKey(entity = User.class, parentColumns = "id", childColumns = "user_id")
 })
+
 public class Room {
     @PrimaryKey(autoGenerate = true)
     private int id;

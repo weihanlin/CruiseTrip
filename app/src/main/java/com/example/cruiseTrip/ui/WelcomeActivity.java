@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.cruiseTrip.R;
 import com.example.cruiseTrip.authentication.LoginActivity;
-import com.example.cruiseTrip.roomBooking.ReservationActivity;
+import com.example.cruiseTrip.roomBooking.RoomActivity;
 
 public class WelcomeActivity extends AppCompatActivity {
 
@@ -27,7 +27,7 @@ public class WelcomeActivity extends AppCompatActivity {
             }
 
             public void onFinish() {
-                Intent i = new Intent(WelcomeActivity.this, ReservationActivity.class);
+                Intent i = new Intent(WelcomeActivity.this, RoomActivity.class);
                 startActivity(i);
             }
         }.start();

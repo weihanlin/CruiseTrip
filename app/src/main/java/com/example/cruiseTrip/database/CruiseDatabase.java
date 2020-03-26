@@ -9,6 +9,14 @@ import androidx.room.RoomDatabase;
 import androidx.room.TypeConverters;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
+import com.example.cruiseTrip.entity.Itinerary;
+import com.example.cruiseTrip.entity.Reservation;
+import com.example.cruiseTrip.entity.Room;
+import com.example.cruiseTrip.entity.RoomService;
+import com.example.cruiseTrip.entity.Service;
+import com.example.cruiseTrip.entity.User;
+import com.example.cruiseTrip.adapters.Converters;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.concurrent.ExecutorService;
@@ -64,13 +72,13 @@ public abstract class CruiseDatabase extends RoomDatabase {
                 RoomServiceDao roomServiceDao = INSTANCE.roomServiceDao();
                 ReservationDao reservationDao = INSTANCE.reservationDao();
 
-                reservationDao.deleteAll();
-                roomServiceDao.deleteAll();
-                serviceDao.deleteAll();
-                saDao.deleteAll();
-                roomDao.deleteAll();
-                dao.deleteAll();
-                itinerariesDao.deleteAll();
+//                reservationDao.deleteAll();
+//                roomServiceDao.deleteAll();
+//                serviceDao.deleteAll();
+//                saDao.deleteAll();
+//                roomDao.deleteAll();
+//                dao.deleteAll();
+//                itinerariesDao.deleteAll();
 
                 SimpleDateFormat fmt = new SimpleDateFormat("yyyy-mm-dd");
                 try {
@@ -82,10 +90,27 @@ public abstract class CruiseDatabase extends RoomDatabase {
 
                 dao.insert("admin", "admin123", "1@gmail.com", "7886542234");
                 dao.insert("another", "other123", "2@gmail.com", "7884587288");
-                roomDao.insert(new Room(1,"Sea",2));
-                roomDao.insert(new Room(2,"Sea",1));
-                roomDao.insert(new Room(3,"Sea",1));
-//                roomDao.bookRoom(1,2);
+                roomDao.insert(new Room(201,"conciergeRoom",1));
+                roomDao.insert(new Room(202,"verandahRoom",1));
+                roomDao.insert(new Room(203,"oceanRoom",1));
+                roomDao.insert(new Room(204,"oceanRoom",1));
+                roomDao.insert(new Room(205,"oceanRoom",1));
+                roomDao.insert(new Room(206,"insideRoom",1));
+                roomDao.insert(new Room(207,"insideRoom",1));
+                roomDao.insert(new Room(208,"insideRoom",1));
+                roomDao.insert(new Room(209,"insideRoom",1));
+                roomDao.insert(new Room(210,"insideRoom",1));
+                roomDao.insert(new Room(211,"insideRoom",1));
+                roomDao.insert(new Room(212,"insideRoom",1));
+                roomDao.insert(new Room(213,"insideRoom",1));
+                roomDao.insert(new Room(214,"insideRoom",1));
+                roomDao.insert(new Room(215,"insideRoom",1));
+                roomDao.insert(new Room(216,"oceanRoom",1));
+                roomDao.insert(new Room(217,"oceanRoom",1));
+                roomDao.insert(new Room(218,"verandahRoom",1));
+                roomDao.insert(new Room(219,"verandahRoom",1));
+                roomDao.insert(new Room(220,"conciergeRoom",1));
+//                roomDao.bookRoom(201,1);
                 saDao.insert(new SpecialActivity(1,"KTV",true,true,1));
                 saDao.insert(new SpecialActivity(2,"KTV",true,true,null));
 
@@ -96,7 +121,7 @@ public abstract class CruiseDatabase extends RoomDatabase {
 
                 serviceDao.insert(new Service(1, "Morning Call",10.0));
                 serviceDao.insert(new Service(2, "Food Delivery",10.3));
-                roomServiceDao.insert(new RoomService(1,1));
+                roomServiceDao.insert(new RoomService(1,201));
 //                reservationDao.insert(new Reservation(1,1));
 
                 Log.d("DATABASE","AFTER INSERT DATA");

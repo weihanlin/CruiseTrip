@@ -1,4 +1,4 @@
-package com.example.cruiseTrip.model;
+package com.example.cruiseTrip.adapters;
 
 import android.content.Context;
 import android.content.Intent;
@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.cruiseTrip.ui.ActionActivity;
 import com.example.cruiseTrip.R;
-import com.example.cruiseTrip.database.Itinerary;
+import com.example.cruiseTrip.entity.Itinerary;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.example.cruiseTrip.adapters;
+package com.example.cruiseTrip.viewModel;
 
 import android.app.Application;
 

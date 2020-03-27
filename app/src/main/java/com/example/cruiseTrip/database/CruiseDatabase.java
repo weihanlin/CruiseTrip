@@ -72,13 +72,13 @@ public abstract class CruiseDatabase extends RoomDatabase {
                 RoomServiceDao roomServiceDao = INSTANCE.roomServiceDao();
                 ReservationDao reservationDao = INSTANCE.reservationDao();
 
-//                reservationDao.deleteAll();
-//                roomServiceDao.deleteAll();
-//                serviceDao.deleteAll();
-//                saDao.deleteAll();
-//                roomDao.deleteAll();
-//                dao.deleteAll();
-//                itinerariesDao.deleteAll();
+                reservationDao.deleteAll();
+                roomServiceDao.deleteAll();
+                serviceDao.deleteAll();
+                saDao.deleteAll();
+                roomDao.deleteAll();
+                dao.deleteAll();
+                itinerariesDao.deleteAll();
 
                 SimpleDateFormat fmt = new SimpleDateFormat("yyyy-mm-dd");
                 try {

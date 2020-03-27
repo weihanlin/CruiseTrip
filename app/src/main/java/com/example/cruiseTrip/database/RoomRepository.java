@@ -24,4 +24,8 @@ public class RoomRepository {
     public LiveData<List<Room>> getBookedRooms(int userId) {
         return roomDao.getBookedRooms(userId);
     }
+
+    public void bookRoom(int id, int user_id) {
+        roomDao.bookRoom(id, user_id);
+    }
 }

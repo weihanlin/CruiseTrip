@@ -52,13 +52,6 @@ public class ActionActivity extends AppCompatActivity {
             }
         });
 
-        DaysAdapter adapter = new DaysAdapter(this, days);
-        ListView listView = findViewById(R.id.theDay);
-
-
-        ActivityAdapter adapter1 = new ActivityAdapter(this, activities);
-
-
         final TextView titleView = findViewById(R.id.itTitle);
         titleView.setText(sharedPreferences.getString("ITNAME","PLACE"));
 
@@ -69,11 +62,17 @@ public class ActionActivity extends AppCompatActivity {
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(arrayAdapter);
 
+
+        ListView listView = findViewById(R.id.theDay);
+        listView.addFooterView(new View(this));
+        DaysAdapter adapter = new DaysAdapter(this, days);
+        ActivityAdapter adapter1 = new ActivityAdapter(this, activities);
+
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if(position == 0){
-                    Toast.makeText(view.getContext(),"Itinerary",Toast.LENGTH_LONG).show();
+                    //Toast.makeText(view.getContext(),"Itinerary",Toast.LENGTH_LONG).show();
                     listView.setAdapter(adapter);
 
                     listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -84,16 +83,9 @@ public class ActionActivity extends AppCompatActivity {
                         }
                     });
                 }
-                if(position == 1){
-                    Toast.makeText(view.getContext(),"Activity",Toast.LENGTH_LONG).show();
+                else if(position == 1) {
+                    //Toast.makeText(view.getContext(),"Activity",Toast.LENGTH_LONG).show();
                     listView.setAdapter(adapter1);
-                    listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                        @Override
-                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                            //open another activity to show the port of call
-
-                        }
-                    });
                 }
             }
 

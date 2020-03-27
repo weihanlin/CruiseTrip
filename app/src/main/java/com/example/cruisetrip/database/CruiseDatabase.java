@@ -64,17 +64,17 @@ public abstract class CruiseDatabase extends RoomDatabase {
                 RoomServiceDao roomServiceDao = INSTANCE.roomServiceDao();
                 ReservationDao reservationDao = INSTANCE.reservationDao();
 
-//                reservationDao.deleteAll();
-//                roomServiceDao.deleteAll();
-//                serviceDao.deleteAll();
-//                saDao.deleteAll();
-//                roomDao.deleteAll();
-//                dao.deleteAll();
-//                itinerariesDao.deleteAll();
+                reservationDao.deleteAll();
+                roomServiceDao.deleteAll();
+                serviceDao.deleteAll();
+                saDao.deleteAll();
+                roomDao.deleteAll();
+                dao.deleteAll();
+                itinerariesDao.deleteAll();
 
                 SimpleDateFormat fmt = new SimpleDateFormat("yyyy-mm-dd");
                 try {
-                    itinerariesDao.insert(new Itinerary(1,"Alaska", fmt.parse("2020-05-20"), 5, "alaska_trip"));
+                    itinerariesDao.insert(new Itinerary(1,"Alaska", fmt.parse("2020-05-20"), 3, "alaska_trip"));
                     itinerariesDao.insert(new Itinerary(2,"Europe", fmt.parse("2020-09-20"), 5, "europe_trip"));
                 } catch (ParseException e) {
                     e.printStackTrace();
@@ -86,13 +86,68 @@ public abstract class CruiseDatabase extends RoomDatabase {
                 roomDao.insert(new Room(2,"Sea",1));
                 roomDao.insert(new Room(3,"Sea",1));
 //                roomDao.bookRoom(1,2);
-                saDao.insert(new SpecialActivity(1,"KTV",true,true,1));
-                saDao.insert(new SpecialActivity(2,"KTV",true,true,null));
 
-                saDao.insert(new SpecialActivity(3,"Day 1",true,true,1));
-                saDao.insert(new SpecialActivity(4,"Day 2",true,true,1));
-                saDao.insert(new SpecialActivity(5,"Day 3",true,true,1));
-                saDao.insert(new SpecialActivity(6,"Day 4",true,true,1));
+                SpecialActivity onboardActivity = new SpecialActivity(1,"Amari Tasting",true,true,1);
+                onboardActivity.setDescription("Delve into a diverse menu of Italian Amari drinks as the perfect primer to this complex class of herbal spirits.");
+                saDao.insert(onboardActivity);
+
+                onboardActivity.setId(2);
+                onboardActivity.setTitle("Beer Tasting");
+                onboardActivity.setDescription("Let’s make a toast to the world’s oldest alcoholic drink—from ales and lagers to stouts, wheats and beyond!");
+                saDao.insert(onboardActivity);
+
+                onboardActivity.setId(3);
+                onboardActivity.setTitle("Chocolate & Liquor Tasting");
+                onboardActivity.setDescription("Indulge in the exquisite pairings of rich chocolates with premium Champagne and liquors—c’est magnifique!");
+                saDao.insert(onboardActivity);
+
+
+                SpecialActivity days = new SpecialActivity(4,"Day 1",true,true,1);
+                days.setDescription("<p><b>ATV Expedition</b><br/>" +
+                        "Roam the land via an ATV while soaking up stunning valley, mountain and ocean views along the ride.</p>" +
+                        "<p><b>Kayak Adventure</b><br/>" +
+                        "Paddle a 2-person wilderness kayak accompanied by a safety-certified local guide along the Hoonah waterfront.</p>" +
+                        "<p><b>Whales, Wildlife and Brown Bear Search</b><br/>" +
+                        "Take a high-speed catamaran ride while searching for orca, sea lions, seals, humpback whales, bald eagles and other Alaskan creatures.</p>");
+                try {
+                    days.setStart(fmt.parse("2020-05-21"));
+                }
+                catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                saDao.insert(days);
+
+                days.setId(5);
+                days.setTitle("Day 2");
+                days.setDescription("<p><b>Whale Park</b><br/>" +
+                        "Enjoy beautiful seaside vistas as you look for majestic humpback whales, " +
+                                "which can be spotted off the coast of Sitka in the summer.</p>" +
+                        "<p><b>Fortress of the Bear</b><br/>" +
+                        "Visit this habitat for orphaned brown bear cubs and view Alaska brown bears in a natural setting.</p>"
+                        );
+                try {
+                    days.setStart(fmt.parse("2020-05-22"));
+                }
+                catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                saDao.insert(days);
+
+                days.setId(6);
+                days.setTitle("Day 3");
+                days.setDescription("<p><b>Capilano Suspension Bridge</b><br/>" +
+                        "Designed for walking use only, this 450-footlong bridge crosses a deep " +
+                        "gorge of the Capilano River. Once across you will find a progressive series" +
+                        " of platforms that snake along the primordial forest of British Columbia. " +
+                        "Keep an eye out for birds and other wildlife that live in the woods surrounding the trails.</p>");
+                try {
+                    days.setStart(fmt.parse("2020-05-23"));
+                }
+                catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                saDao.insert(days);
+
 
                 serviceDao.insert(new Service(1, "Morning Call",10.0));
                 serviceDao.insert(new Service(2, "Food Delivery",10.3));

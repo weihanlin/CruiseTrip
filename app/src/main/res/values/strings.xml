@@ -14,6 +14,8 @@
     <string name="Login_msg">Please log in!</string>
     <string name="Register_success">Register Success! \n</string>
 
+    <string name="thing_to_see">Things to See</string>
+
     <string-array name="action_list">
         <item>Itinerary</item>
         <item>Activities</item>

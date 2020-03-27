@@ -12,7 +12,7 @@ import com.example.cruisetrip.database.SpecialActivity;
 
 import java.util.List;
 
-public class ItineraryViewModel extends AndroidViewModel {
+public class  ItineraryViewModel extends AndroidViewModel {
 
     private ItinerariesRepository itinerariesRepository;
     private LiveData<List<Itinerary>> allItineraries;
@@ -29,6 +29,10 @@ public class ItineraryViewModel extends AndroidViewModel {
 
     public LiveData<List<SpecialActivity>> getDays(int itineraryID) {
         return itinerariesRepository.getDays(itineraryID);
+    }
+
+    public LiveData<List<SpecialActivity>> getActivities(int itineraryID) {
+        return itinerariesRepository.getOnBoardActivities(itineraryID);
     }
 
 

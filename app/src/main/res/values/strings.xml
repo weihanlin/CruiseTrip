@@ -13,4 +13,9 @@
     <string name="login_failed">"Login failed"</string>
     <string name="Login_msg">Please log in!</string>
     <string name="Register_success">Register Success! \n</string>
+
+    <string-array name="action_list">
+        <item>Itinerary</item>
+        <item>Activities</item>
+    </string-array>
 </resources>

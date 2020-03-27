@@ -36,8 +36,8 @@ public class ItinerariesRepository {
     }
 
     //Query all on board activities for specific itinerary
-    public LiveData<List<SpecialActivity>> getOnBoardActivities(Itinerary itinerary) {
-        return saDao.getOnBoard(itinerary.getId(), true);
+    public LiveData<List<SpecialActivity>> getOnBoardActivities(int itineraryID) {
+        return saDao.getOnBoard(itineraryID, true);
     }
 
     //Query all port activities for specific itinerary

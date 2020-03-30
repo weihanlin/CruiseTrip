@@ -1,4 +1,4 @@
-package com.example.cruiseTrip.entity;
+package com.example.cruiseTrip.database.entity;
 
 
 import androidx.room.ColumnInfo;
@@ -6,7 +6,6 @@ import androidx.room.Entity;
 import androidx.room.ForeignKey;
 
 import com.example.cruiseTrip.database.SpecialActivity;
-import com.example.cruiseTrip.entity.User;
 
 @Entity(foreignKeys = {
         @ForeignKey(entity = User.class, parentColumns = "id", childColumns = "user_id"),

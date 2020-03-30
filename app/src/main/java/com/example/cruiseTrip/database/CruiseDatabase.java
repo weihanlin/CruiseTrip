@@ -9,12 +9,12 @@ import androidx.room.RoomDatabase;
 import androidx.room.TypeConverters;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
-import com.example.cruiseTrip.entity.Itinerary;
-import com.example.cruiseTrip.entity.Reservation;
-import com.example.cruiseTrip.entity.Room;
-import com.example.cruiseTrip.entity.RoomService;
-import com.example.cruiseTrip.entity.Service;
-import com.example.cruiseTrip.entity.User;
+import com.example.cruiseTrip.database.entity.Itinerary;
+import com.example.cruiseTrip.database.entity.Reservation;
+import com.example.cruiseTrip.database.entity.Room;
+import com.example.cruiseTrip.database.entity.RoomService;
+import com.example.cruiseTrip.database.entity.Service;
+import com.example.cruiseTrip.database.entity.User;
 import com.example.cruiseTrip.adapters.Converters;
 
 import java.text.ParseException;
@@ -47,7 +47,7 @@ public abstract class CruiseDatabase extends RoomDatabase {
                     Log.d("DATABASE", "INSTANCE is NULL");
                     INSTANCE = androidx.room.Room.databaseBuilder(context,
                             CruiseDatabase.class, "cruise_db")
-                            .addCallback(sRoomDatabaseCallback)
+                            .addCallback(sRoomDatabaseCallback).allowMainThreadQueries()
                             .build();
                 }
             }
@@ -91,12 +91,12 @@ public abstract class CruiseDatabase extends RoomDatabase {
                 dao.insert("admin", "admin123", "1@gmail.com", "7886542234");
                 dao.insert("another", "other123", "2@gmail.com", "7884587288");
                 roomDao.insert(new Room(201,"conciergeRoom",1));
+                roomDao.insert(new Room(206,"insideRoom",1));
+                roomDao.insert(new Room(207,"insideRoom",1));
                 roomDao.insert(new Room(202,"verandahRoom",1));
                 roomDao.insert(new Room(203,"oceanRoom",1));
                 roomDao.insert(new Room(204,"oceanRoom",1));
                 roomDao.insert(new Room(205,"oceanRoom",1));
-                roomDao.insert(new Room(206,"insideRoom",1));
-                roomDao.insert(new Room(207,"insideRoom",1));
                 roomDao.insert(new Room(208,"insideRoom",1));
                 roomDao.insert(new Room(209,"insideRoom",1));
                 roomDao.insert(new Room(210,"insideRoom",1));

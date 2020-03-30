@@ -8,7 +8,7 @@ import android.widget.EditText;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.cruiseTrip.R;
-import com.example.cruiseTrip.entity.User;
+import com.example.cruiseTrip.database.entity.User;
 import com.example.cruiseTrip.database.UsersRepository;
 
 public class RegisterActivity extends AppCompatActivity {

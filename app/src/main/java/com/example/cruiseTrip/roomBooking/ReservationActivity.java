@@ -28,22 +28,26 @@ public class ReservationActivity extends AppCompatActivity {
         conciergeRoom = findViewById(R.id.conciergeRoom);
 
         insideRoom.setOnClickListener(v -> {
-            Intent i = new Intent(ReservationActivity.this, WelcomeActivity.class);
+            Intent i = new Intent(ReservationActivity.this, RoomActivity.class);
+            i.putExtra("roomType", "insideRoom");
             startActivity(i);
         });
 
         oceanRoom.setOnClickListener(v -> {
-            Intent i = new Intent(ReservationActivity.this, WelcomeActivity.class);
+            Intent i = new Intent(ReservationActivity.this, RoomActivity.class);
+            i.putExtra("roomType", "oceanRoom");
             startActivity(i);
         });
 
         verandahRoom.setOnClickListener(v -> {
-            Intent i = new Intent(ReservationActivity.this, WelcomeActivity.class);
+            Intent i = new Intent(ReservationActivity.this, RoomActivity.class);
+            i.putExtra("roomType", "verandahRoom");
             startActivity(i);
         });
 
         conciergeRoom.setOnClickListener(v -> {
-            Intent i = new Intent(ReservationActivity.this, WelcomeActivity.class);
+            Intent i = new Intent(ReservationActivity.this, RoomActivity.class);
+            i.putExtra("roomType", "conciergeRoom");
             startActivity(i);
         });
     }

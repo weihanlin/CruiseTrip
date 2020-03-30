@@ -1,4 +1,4 @@
-package com.example.cruiseTrip.entity;
+package com.example.cruiseTrip.database.entity;
 
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
@@ -27,7 +27,7 @@ public class Itinerary {
     private String image;
 
     @Ignore
-    public Itinerary(int id, String destination, Date startDate, int days, String image) {
+    public Itinerary(int id, @NonNull String destination, Date startDate, int days, String image) {
         this.id = id;
         this.destination = destination;
         this.startDate = startDate;

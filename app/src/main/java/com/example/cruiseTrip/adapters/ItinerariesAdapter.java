@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.cruiseTrip.ui.ActionActivity;
 import com.example.cruiseTrip.R;
-import com.example.cruiseTrip.entity.Itinerary;
+import com.example.cruiseTrip.database.entity.Itinerary;
 
 import java.util.List;
 

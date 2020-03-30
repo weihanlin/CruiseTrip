@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 
 import com.example.cruiseTrip.adapters.DaysAdapter;
-import com.example.cruiseTrip.viewModel.ItineraryViewModel;
+import com.example.cruiseTrip.database.viewModel.ItineraryViewModel;
 import com.example.cruiseTrip.R;
 import com.example.cruiseTrip.database.SpecialActivity;
 

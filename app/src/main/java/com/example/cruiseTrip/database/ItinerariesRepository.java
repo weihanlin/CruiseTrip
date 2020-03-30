@@ -4,14 +4,14 @@ import android.app.Application;
 
 import androidx.lifecycle.LiveData;
 
-import com.example.cruiseTrip.entity.Itinerary;
+import com.example.cruiseTrip.database.entity.Itinerary;
 
 import java.util.List;
 
 public class ItinerariesRepository {
-    ItinerariesDao itinerariesDao;
-    RoomDao roomDao;
-    SADao saDao;
+    private ItinerariesDao itinerariesDao;
+    private RoomDao roomDao;
+    private SADao saDao;
 
     public ItinerariesRepository(Application application){
         CruiseDatabase db = CruiseDatabase.getDatabase(application);
@@ -21,9 +21,8 @@ public class ItinerariesRepository {
     }
 
     public void insert(final Itinerary itinerary){
-        CruiseDatabase.databaseWriteExecutor.execute(() -> {
-            itinerariesDao.insert(itinerary);
-        });
+        CruiseDatabase.databaseWriteExecutor.execute(() ->
+                itinerariesDao.insert(itinerary));
     }
 
     //Query all itineraries

@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.cruiseTrip.R;
-import com.example.cruiseTrip.entity.Room;
+import com.example.cruiseTrip.database.entity.Room;
 
 import java.util.List;
 
@@ -17,12 +17,20 @@ public class GridItemAdapter extends BaseAdapter {
     private List<Room> rooms;
     private Context context;
     private LayoutInflater inflater;
-    private int imageNum;
+    private int imgNormal;
+    private int imgSelected;
+    private int imgSold;
+    private int imgUnavailable;
+    private String roomType;
 
-    public GridItemAdapter(Context context, List<Room> rooms, int imageNum) {
+    public GridItemAdapter(Context context, List<Room> rooms, int[] imgArray, String roomType) {
         this.context = context;
         this.rooms = rooms;
-        this.imageNum = imageNum;
+        this.imgNormal = imgArray[0];
+        this.imgSelected = imgArray[1];
+        this.imgSold = imgArray[2];
+        this.imgUnavailable = imgArray[3];
+        this.roomType = roomType;
     }
 
     @Override
@@ -44,18 +52,25 @@ public class GridItemAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         if(inflater == null) {
             inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        }
-
-        if(convertView == null) {
+        } else if(convertView == null) {
             convertView = inflater.inflate(R.layout.row_item, null);
         }
 
         ImageView imageView = convertView.findViewById(R.id.image_view);
         TextView textView = convertView.findViewById(R.id.text_view);
+        Room room = getItem(position);
 
-        imageView.setImageResource(imageNum);
-        textView.setText((int) getItemId(position));
+        if(room.getType().equals(roomType)) {
+            imageView.setImageResource(imgNormal);
 
+            if (!room.isState())
+                imageView.setImageResource(imgSold);
+        }
+        else {
+            imageView.setImageResource(imgUnavailable);
+        }
+
+        textView.setText(Integer.toString(room.getId()));
         return convertView;
     }
 

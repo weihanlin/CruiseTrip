@@ -1,4 +1,4 @@
-package com.example.cruiseTrip.viewModel;
+package com.example.cruiseTrip.database.viewModel;
 
 import android.app.Application;
 
@@ -7,7 +7,7 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
 import com.example.cruiseTrip.database.ItinerariesRepository;
-import com.example.cruiseTrip.entity.Itinerary;
+import com.example.cruiseTrip.database.entity.Itinerary;
 import com.example.cruiseTrip.database.SpecialActivity;
 
 import java.util.List;

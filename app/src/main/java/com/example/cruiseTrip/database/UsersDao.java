@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Query;
 
-import com.example.cruiseTrip.entity.User;
+import com.example.cruiseTrip.database.entity.User;
 
 import java.util.List;
 

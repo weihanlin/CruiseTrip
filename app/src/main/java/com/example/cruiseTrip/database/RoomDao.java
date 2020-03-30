@@ -6,7 +6,7 @@ import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 
-import com.example.cruiseTrip.entity.Room;
+import com.example.cruiseTrip.database.entity.Room;
 
 import java.util.List;
 
@@ -19,7 +19,7 @@ public interface RoomDao {
     void deleteAll();
 
     @Query("SELECT * FROM room")
-    LiveData<List<Room>> getAllRooms();
+    List<Room> getAllRooms();
 
     @Query("UPDATE Room SET itinerary_id = :itinerary_id WHERE id = :id")
     int updateItinerary(int id, int itinerary_id);

@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.cruiseTrip.ui.DestinationActivity;
 import com.example.cruiseTrip.R;
-import com.example.cruiseTrip.entity.User;
+import com.example.cruiseTrip.database.entity.User;
 import com.example.cruiseTrip.database.UsersRepository;
 
 import java.util.List;
@@ -68,7 +68,7 @@ public class LoginActivity extends AppCompatActivity {
 
         usersRepository = new UsersRepository(this.getApplication());
         usersRepository.getAllUsers().observe(this, userList -> {
-            Boolean identifier = false;
+            boolean identifier = false;
             if(usersList != null && !usersList.isEmpty()) {
                 for (User user : usersList) {
                     String userName = user.getName();

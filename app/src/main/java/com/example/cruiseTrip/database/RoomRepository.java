@@ -4,20 +4,20 @@ import android.app.Application;
 
 import androidx.lifecycle.LiveData;
 
-import com.example.cruiseTrip.entity.Room;
+import com.example.cruiseTrip.database.entity.Room;
 
 import java.util.List;
 
 public class RoomRepository {
-    RoomDao roomDao;
+    private RoomDao roomDao;
     private CruiseDatabase db;
 
-    public RoomRepository(Application application){
+    public RoomRepository(Application application) {
         this.db = CruiseDatabase.getDatabase(application);
         this.roomDao = db.roomDao();
     }
 
-    public LiveData<List<Room>> getAllRooms() {
+    public List<Room> getAllRooms () {
         return roomDao.getAllRooms();
     }
 

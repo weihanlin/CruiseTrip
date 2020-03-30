@@ -1,4 +1,4 @@
-package com.example.cruiseTrip.entity;
+package com.example.cruiseTrip.database.entity;
 
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
@@ -25,7 +25,7 @@ public class User {
     @ColumnInfo
     private String phone;
 
-    public User(String name, String password, String email, String phone) {
+    public User(@NonNull String name, @NonNull String password, String email, String phone) {
         this.name = name;
         this.password = password;
         this.email = email;

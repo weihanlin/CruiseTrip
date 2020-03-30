@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.cruiseTrip.R;
 import com.example.cruiseTrip.authentication.LoginActivity;
+import com.example.cruiseTrip.roomBooking.ReservationActivity;
 import com.example.cruiseTrip.roomBooking.RoomActivity;
 
 public class WelcomeActivity extends AppCompatActivity {
@@ -20,14 +21,14 @@ public class WelcomeActivity extends AppCompatActivity {
 
         new CountDownTimer(1000, 1000) {
 
-            TextView textView = (TextView) findViewById(R.id.loading);
+            TextView textView = findViewById(R.id.loading);
 
             public void onTick(long millisUntilFinished) {
                 textView.setText("Loading... Please Wait: " + millisUntilFinished / 1000);
             }
 
             public void onFinish() {
-                Intent i = new Intent(WelcomeActivity.this, RoomActivity.class);
+                Intent i = new Intent(WelcomeActivity.this, ReservationActivity.class);
                 startActivity(i);
             }
         }.start();

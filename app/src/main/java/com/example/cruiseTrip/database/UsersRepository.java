@@ -4,10 +4,10 @@ import android.app.Application;
 
 import androidx.lifecycle.LiveData;
 
-import com.example.cruiseTrip.entity.Reservation;
-import com.example.cruiseTrip.entity.Room;
-import com.example.cruiseTrip.entity.RoomService;
-import com.example.cruiseTrip.entity.User;
+import com.example.cruiseTrip.database.entity.Reservation;
+import com.example.cruiseTrip.database.entity.Room;
+import com.example.cruiseTrip.database.entity.RoomService;
+import com.example.cruiseTrip.database.entity.User;
 
 import java.util.List;
 

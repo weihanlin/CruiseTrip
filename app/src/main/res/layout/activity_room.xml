@@ -2,7 +2,6 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/roomBg">
 
     <TextView
@@ -17,16 +16,42 @@
         android:textSize="24sp"
         android:textStyle="bold" />
 
-    <GridView
-        android:id="@+id/gridItems"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="484dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="125dp"
-        android:numColumns="4"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp" />
+        android:layout_height="800dp"
+        android:orientation="horizontal">
+
+        <GridView
+            android:id="@+id/gridItemsCol1"
+            android:layout_width="100dp"
+            android:layout_height="500dp"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="125dp"
+            android:numColumns="1"
+            android:paddingStart="10dp" />
+        <GridView
+            android:id="@+id/gridItemsCol2"
+            android:layout_width="100dp"
+            android:layout_height="500dp"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="125dp"
+            android:numColumns="1" />
+        <GridView
+            android:id="@+id/gridItemsCol3"
+            android:layout_width="100dp"
+            android:layout_height="500dp"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="125dp"
+            android:numColumns="1" />
+        <GridView
+            android:id="@+id/gridItemsCol4"
+            android:layout_width="100dp"
+            android:layout_height="500dp"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="125dp"
+            android:numColumns="1"
+            android:paddingEnd="10dp" />
+
+    </LinearLayout>
 
 </RelativeLayout>

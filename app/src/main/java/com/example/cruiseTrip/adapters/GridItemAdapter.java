@@ -52,7 +52,8 @@ public class GridItemAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         if(inflater == null) {
             inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        } else if(convertView == null) {
+        }
+        if(convertView == null) {
             convertView = inflater.inflate(R.layout.row_item, null);
         }
 

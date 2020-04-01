@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.cruiseTrip.roomBooking.PriceActivity">
+
+    <TextView
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:textSize="26sp"
+        android:text="My booking " />
+
+    <TextView
+        android:layout_marginTop="50dp"
+        android:layout_marginStart="50dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:text="No. of travellers" />
+
+    <Spinner
+        android:id="@+id/price_people_number"
+        android:layout_width="125dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="5dp"
+        android:autofillHints="Number of People" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="40dp"
+        android:text="Select dates"
+        android:textSize="18sp" />
+
+    <EditText
+        android:id="@+id/room_editText"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="45dp"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:ems="10"
+        android:textSize="18sp"
+        android:hint="Please pick up an available date"
+        android:inputType="date" />
+
+    <TextView
+        android:id="@+id/price_txt"
+        android:layout_marginTop="50dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:text="" />
+
+    <Button
+        android:id="@+id/price_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAllCaps="false"
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="45dp"
+        android:text="View Price" />
+
+    <Button
+        android:id="@+id/price_btn_confirm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:textAllCaps="false"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="15dp"
+        android:layout_marginStart="45dp"
+        android:text="Confirm" />
+
+
+</LinearLayout>

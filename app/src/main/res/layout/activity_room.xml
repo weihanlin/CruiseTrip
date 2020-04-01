@@ -1,57 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/roomBg">
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="98dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="98dp"
-        android:text="Room Arrangement"
-        android:textSize="24sp"
-        android:textStyle="bold" />
+    android:layout_height="wrap_content"
+    tools:context="com.example.cruiseTrip.roomBooking.RoomActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="800dp"
-        android:orientation="horizontal">
+        android:layout_height="wrap_content"
+        android:hapticFeedbackEnabled="false"
+        android:orientation="vertical">
 
-        <GridView
-            android:id="@+id/gridItemsCol1"
-            android:layout_width="100dp"
-            android:layout_height="500dp"
-            android:layout_marginStart="0dp"
-            android:layout_marginTop="125dp"
-            android:numColumns="1"
-            android:paddingStart="10dp" />
-        <GridView
-            android:id="@+id/gridItemsCol2"
-            android:layout_width="100dp"
-            android:layout_height="500dp"
-            android:layout_marginStart="0dp"
-            android:layout_marginTop="125dp"
-            android:numColumns="1" />
-        <GridView
-            android:id="@+id/gridItemsCol3"
-            android:layout_width="100dp"
-            android:layout_height="500dp"
-            android:layout_marginStart="0dp"
-            android:layout_marginTop="125dp"
-            android:numColumns="1" />
-        <GridView
-            android:id="@+id/gridItemsCol4"
-            android:layout_width="100dp"
-            android:layout_height="500dp"
-            android:layout_marginStart="0dp"
-            android:layout_marginTop="125dp"
-            android:numColumns="1"
-            android:paddingEnd="10dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="50dp"
+            android:text="Room Arrangement"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <GridView
+                android:id="@+id/gridItemsCol1"
+                android:layout_width="100dp"
+                android:layout_height="500dp"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="30dp"
+                android:numColumns="1"
+                android:paddingStart="10dp" />
+
+            <GridView
+                android:id="@+id/gridItemsCol2"
+                android:layout_width="100dp"
+                android:layout_height="500dp"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="30dp"
+                android:numColumns="1" />
+
+            <GridView
+                android:id="@+id/gridItemsCol3"
+                android:layout_width="100dp"
+                android:layout_height="500dp"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="30dp"
+                android:numColumns="1" />
+
+            <GridView
+                android:id="@+id/gridItemsCol4"
+                android:layout_width="100dp"
+                android:layout_height="500dp"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="30dp"
+                android:numColumns="1"
+                android:paddingEnd="10dp" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/room_btn"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="3dp"
+            android:text="View Price" />
+
+        <TextView
+            android:id="@+id/room_warning"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="30dp"
+            android:text=""
+            android:textColor="#E40E0E"
+            android:textSize="12sp" />
 
     </LinearLayout>
-
-</RelativeLayout>
+</ScrollView>

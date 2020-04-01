@@ -15,7 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="180sp"
         android:contentDescription="Alaska"
-        app:srcCompat="@drawable/alaska_trip" />
+        app:srcCompat="@drawable/img_trip_alaska" />
 
     <TextView
         android:id="@+id/destination"

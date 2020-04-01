@@ -15,6 +15,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.53"
-        tools:listitem="@layout/recyclerview_item" />
+        tools:listitem="@layout/item_destination" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

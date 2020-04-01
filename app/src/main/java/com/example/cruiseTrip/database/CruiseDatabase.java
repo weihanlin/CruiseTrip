@@ -15,7 +15,7 @@ import com.example.cruiseTrip.database.entity.Room;
 import com.example.cruiseTrip.database.entity.RoomService;
 import com.example.cruiseTrip.database.entity.Service;
 import com.example.cruiseTrip.database.entity.User;
-import com.example.cruiseTrip.adapters.Converters;
+import com.example.cruiseTrip.util.Converters;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -82,8 +82,8 @@ public abstract class CruiseDatabase extends RoomDatabase {
 
                 SimpleDateFormat fmt = new SimpleDateFormat("yyyy-mm-dd");
                 try {
-                    itinerariesDao.insert(new Itinerary(1,"Alaska", fmt.parse("2020-05-20"), 5, "alaska_trip"));
-                    itinerariesDao.insert(new Itinerary(2,"Europe", fmt.parse("2020-09-20"), 5, "europe_trip"));
+                    itinerariesDao.insert(new Itinerary(1,"Alaska", fmt.parse("2020-05-20"), 5, "img_trip_alaska"));
+                    itinerariesDao.insert(new Itinerary(2,"Europe", fmt.parse("2020-09-20"), 5, "img_trip_europe"));
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }

@@ -4,51 +4,34 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.GridLayout;
 import android.widget.LinearLayout;
 
 import com.example.cruiseTrip.R;
-import com.example.cruiseTrip.ui.WelcomeActivity;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class ReservationActivity extends AppCompatActivity {
 
-    private LinearLayout insideRoom;
-    private LinearLayout oceanRoom;
-    private LinearLayout verandahRoom;
-    private LinearLayout conciergeRoom;
+    private Map<String, LinearLayout> roomsType;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reservation);
 
-        insideRoom = findViewById(R.id.insideRoom);
-        oceanRoom = findViewById(R.id.oceanRoom);
-        verandahRoom = findViewById(R.id.verandahRoom);
-        conciergeRoom = findViewById(R.id.conciergeRoom);
+        roomsType = new HashMap<>();
+        roomsType.put("insideRoom", findViewById(R.id.insideRoom));
+        roomsType.put("oceanRoom", findViewById(R.id.oceanRoom));
+        roomsType.put("verandahRoom", findViewById(R.id.verandahRoom));
+        roomsType.put("conciergeRoom", findViewById(R.id.conciergeRoom));
 
-        insideRoom.setOnClickListener(v -> {
-            Intent i = new Intent(ReservationActivity.this, RoomActivity.class);
-            i.putExtra("roomType", "insideRoom");
-            startActivity(i);
-        });
-
-        oceanRoom.setOnClickListener(v -> {
-            Intent i = new Intent(ReservationActivity.this, RoomActivity.class);
-            i.putExtra("roomType", "oceanRoom");
-            startActivity(i);
-        });
-
-        verandahRoom.setOnClickListener(v -> {
-            Intent i = new Intent(ReservationActivity.this, RoomActivity.class);
-            i.putExtra("roomType", "verandahRoom");
-            startActivity(i);
-        });
-
-        conciergeRoom.setOnClickListener(v -> {
-            Intent i = new Intent(ReservationActivity.this, RoomActivity.class);
-            i.putExtra("roomType", "conciergeRoom");
-            startActivity(i);
+        roomsType.forEach((s, linearLayout) -> {
+            linearLayout.setOnClickListener(v -> {
+                Intent i = new Intent(ReservationActivity.this, RoomActivity.class);
+                i.putExtra("roomType", s);
+                startActivity(i);
+            });
         });
     }
 }

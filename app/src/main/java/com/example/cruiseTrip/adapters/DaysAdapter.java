@@ -21,7 +21,7 @@ public class DaysAdapter extends ArrayAdapter {
     private final List<SpecialActivity> dayItem;
 
     public DaysAdapter(Activity context, List<SpecialActivity> item){
-        super(context, R.layout.days_list,item);
+        super(context, R.layout.item_days,item);
         this.dayItem = item;
 
         this.context = context;
@@ -31,7 +31,7 @@ public class DaysAdapter extends ArrayAdapter {
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         LayoutInflater inflater = context.getLayoutInflater();
-        View rowView = inflater.inflate(R.layout.days_list,null, false);
+        View rowView = inflater.inflate(R.layout.item_days,null, false);
 
         TextView title = rowView.findViewById(R.id.dayTitle);
 

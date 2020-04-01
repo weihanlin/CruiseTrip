@@ -11,7 +11,9 @@ import android.widget.TextView;
 import com.example.cruiseTrip.R;
 import com.example.cruiseTrip.database.entity.Room;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class GridItemAdapter extends BaseAdapter {
     private List<Room> rooms;
@@ -22,6 +24,8 @@ public class GridItemAdapter extends BaseAdapter {
     private int imgSold;
     private int imgUnavailable;
     private String roomType;
+    private AtomicBoolean indicator;
+    public static ArrayList<Integer> selectedRoomsId;
 
     public GridItemAdapter(Context context, List<Room> rooms, int[] imgArray, String roomType) {
         this.context = context;
@@ -54,25 +58,43 @@ public class GridItemAdapter extends BaseAdapter {
             inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         }
         if(convertView == null) {
-            convertView = inflater.inflate(R.layout.row_item, null);
+            convertView = inflater.inflate(R.layout.item_seat, null);
         }
 
         ImageView imageView = convertView.findViewById(R.id.image_view);
-        TextView textView = convertView.findViewById(R.id.text_view);
-        Room room = getItem(position);
+        TextView itemView = convertView.findViewById(R.id.txt_item_room);
 
-        if(room.getType().equals(roomType)) {
+        Room room = getItem(position);
+        selectedRoomsId = new ArrayList<>();
+        indicator = new AtomicBoolean(false);
+
+        // if(room.getId() == 206) room.setState(false);
+
+        // Set images
+        if(room.getType().equals(roomType) && room.isState()) {
             imageView.setImageResource(imgNormal);
 
-            if (!room.isState())
-                imageView.setImageResource(imgSold);
-        }
-        else {
+            convertView.setOnClickListener(v -> {
+                if (!indicator.get()) {
+                    imageView.setImageResource(imgSelected);
+                    indicator.set(true);
+                } else {
+                    imageView.setImageResource(imgNormal);
+                    indicator.set(false);
+                }
+                if(indicator.get()) {
+                    selectedRoomsId.add(room.getId());
+                }
+            });
+        } else if (!room.isState()) {
+            imageView.setImageResource(imgSold);
+        } else {
             imageView.setImageResource(imgUnavailable);
         }
 
-        textView.setText(Integer.toString(room.getId()));
+        // Set text
+        itemView.setText(Integer.toString(room.getId()));
+
         return convertView;
     }
-
 }

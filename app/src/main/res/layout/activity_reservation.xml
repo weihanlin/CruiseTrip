@@ -3,16 +3,16 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@drawable/loginactivity_background"
+    android:background="@drawable/img_background_main"
     android:layout_height="wrap_content"
-    android:layout_width="match_parent">
+    android:layout_width="match_parent"
+    tools:context="com.example.cruiseTrip.roomBooking.ReservationActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hapticFeedbackEnabled="false"
-        android:orientation="vertical"
-        tools:context="com.example.cruiseTrip.roomBooking.ReservationActivity">
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/reservationTitle"
@@ -89,7 +89,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentRight="true"
-                                android:src="@drawable/inside_room"></ImageView>
+                                android:src="@drawable/img_room_inside"></ImageView>
                         </RelativeLayout>
 
                     </LinearLayout>
@@ -155,7 +155,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentRight="true"
-                                android:src="@drawable/oceanview_room"></ImageView>
+                                android:src="@drawable/img_room_oceanview"></ImageView>
                         </RelativeLayout>
 
                     </LinearLayout>
@@ -221,7 +221,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentRight="true"
-                                android:src="@drawable/verandah_room"></ImageView>
+                                android:src="@drawable/img_room_verandah"></ImageView>
                         </RelativeLayout>
 
                     </LinearLayout>
@@ -287,9 +287,8 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentRight="true"
-                                android:src="@drawable/concierge_room"></ImageView>
+                                android:src="@drawable/img_room_concierge"></ImageView>
                         </RelativeLayout>
-
                     </LinearLayout>
 
                     <TextView
@@ -302,8 +301,6 @@
                         android:textSize="16dp"></TextView>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
-
         </GridLayout>
-
     </LinearLayout>
 </ScrollView>

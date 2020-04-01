@@ -17,7 +17,7 @@ public class DestinationActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_destination_list);
+        setContentView(R.layout.activity_destination);
 
         RecyclerView recyclerView = findViewById(R.id.recyclerview);
         ItinerariesAdapter itinerariesAdapter = new ItinerariesAdapter(this);

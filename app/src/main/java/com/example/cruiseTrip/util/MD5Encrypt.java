@@ -1,4 +1,4 @@
-package com.example.cruiseTrip.authentication;
+package com.example.cruiseTrip.util;
 
 import java.math.BigInteger;
 import java.security.MessageDigest;

@@ -34,7 +34,7 @@ public class ItinerariesAdapter extends RecyclerView.Adapter<ItinerariesAdapter.
     @NonNull
     @Override
     public ItineraryHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view =layoutInflater.inflate(R.layout.recyclerview_item, parent, false);
+        View view =layoutInflater.inflate(R.layout.item_destination, parent, false);
         return new ItineraryHolder(view);
     }
 

@@ -1,4 +1,4 @@
-package com.example.cruiseTrip;
+package com.example.cruiseTrip.portActivity;
 
 import android.app.Activity;
 import android.view.LayoutInflater;
@@ -12,6 +12,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.example.cruiseTrip.R;
 import com.example.cruiseTrip.database.SpecialActivity;
 import com.example.cruiseTrip.database.entity.Reservation;
 import com.example.cruiseTrip.database.viewModel.ItineraryViewModel;

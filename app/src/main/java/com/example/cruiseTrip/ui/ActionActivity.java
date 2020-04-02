@@ -14,13 +14,13 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 
-import com.example.cruiseTrip.ActivityAdapter;
-import com.example.cruiseTrip.PortAdvActivity;
 import com.example.cruiseTrip.R;
 import com.example.cruiseTrip.adapters.DaysAdapter;
 import com.example.cruiseTrip.database.SpecialActivity;
 import com.example.cruiseTrip.database.entity.Reservation;
 import com.example.cruiseTrip.database.viewModel.ItineraryViewModel;
+import com.example.cruiseTrip.portActivity.ActivityAdapter;
+import com.example.cruiseTrip.portActivity.PortAdvActivity;
 import com.example.cruiseTrip.roomBooking.RoomTypeActivity;
 
 import java.util.ArrayList;

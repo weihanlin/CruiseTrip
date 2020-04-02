@@ -12,9 +12,11 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.cruiseTrip.ui.ActionActivity;
+import com.example.cruiseTrip.roomBooking.RoomArrangementActivity;
 import com.example.cruiseTrip.R;
 import com.example.cruiseTrip.database.entity.Itinerary;
+import com.example.cruiseTrip.roomBooking.RoomTypeActivity;
+import com.example.cruiseTrip.ui.ActionActivity;
 
 import java.util.List;
 
@@ -34,7 +36,7 @@ public class ItinerariesAdapter extends RecyclerView.Adapter<ItinerariesAdapter.
     @NonNull
     @Override
     public ItineraryHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view =layoutInflater.inflate(R.layout.item_destination, parent, false);
+        View view = layoutInflater.inflate(R.layout.item_destination, parent, false);
         return new ItineraryHolder(view);
     }
 
@@ -43,7 +45,8 @@ public class ItinerariesAdapter extends RecyclerView.Adapter<ItinerariesAdapter.
         if(mItineraries != null){
             Itinerary itinerary = mItineraries.get(position);
 
-            holder.desImg.setImageDrawable(context.getDrawable(context.getResources().getIdentifier(itinerary.getImage(),"drawable",context.getPackageName())));
+            holder.desImg.setImageDrawable(context.getDrawable(context.getResources().getIdentifier(
+                    itinerary.getImage(),"drawable",context.getPackageName())));
 
             holder.destination.setText(itinerary.getDestination());
 
@@ -88,5 +91,4 @@ public class ItinerariesAdapter extends RecyclerView.Adapter<ItinerariesAdapter.
             desImg = itemView.findViewById(R.id.desImg);
         }
     }
-
 }

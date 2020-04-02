@@ -31,15 +31,20 @@ public class UsersRepository {
         return usersDao.getAllUsers();
     }
 
-    public void insert(User user){
+    public void insertUser(User user){
         this.usersDao = db.usersDao();
         CruiseDatabase.databaseWriteExecutor.execute(()->{
             String name = user.getName();
             String password = user.getPassword();
             String email = user.getEmail();
             String phone = user.getPhone();
-            this.usersDao.insert(name, password, email, phone);
+            this.usersDao.insertUser(name, password, email, phone);
         });
+    }
+
+    public User getUser(String username) {
+        this.usersDao = db.usersDao();
+        return usersDao.getUser(username);
     }
 
     //Query reservations for specific user

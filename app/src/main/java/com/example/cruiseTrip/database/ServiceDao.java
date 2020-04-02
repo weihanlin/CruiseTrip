@@ -19,5 +19,5 @@ public interface ServiceDao {
     void deleteAll();
 
     @Query("SELECT * FROM Service")
-    LiveData<List<Service>> getAllServices();
+    List<Service> getAllServices();
 }

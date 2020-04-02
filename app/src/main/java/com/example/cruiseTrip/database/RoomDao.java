@@ -21,6 +21,9 @@ public interface RoomDao {
     @Query("SELECT * FROM room")
     List<Room> getAllRooms();
 
+    @Query("SELECT * FROM Room WHERE id = :id")
+    Room getRoom(int id);
+
     @Query("UPDATE Room SET itinerary_id = :itinerary_id WHERE id = :id")
     int updateItinerary(int id, int itinerary_id);
 
@@ -29,6 +32,5 @@ public interface RoomDao {
 
     @Query("SELECT * FROM Room WHERE user_id = :user_id")
     LiveData<List<Room>> getBookedRooms(int user_id);
-
 
 }

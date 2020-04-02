@@ -16,6 +16,11 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.cruiseTrip.R;
+import com.example.cruiseTrip.authentication.Session;
+import com.example.cruiseTrip.database.UsersRepository;
+import com.example.cruiseTrip.database.entity.Room;
+import com.example.cruiseTrip.database.viewModel.RoomViewModel;
+import com.example.cruiseTrip.ui.InvoiceActivity;
 import com.example.cruiseTrip.util.PriceCalculator;
 
 import java.util.ArrayList;
@@ -31,12 +36,16 @@ public class PriceActivity extends AppCompatActivity {
     private Button btnConfirm;
     private TextView priceTxt;
     private String s = "";
+    private String date = "";
+    private PriceCalculator pc;
     private int peopleCount;
     private int fromDays;
     private int toDays;
     private int days;
-    private PriceCalculator pc;
+    private int peoplePrice;
+    private int roomPrice;
     private int totalPrice;
+    private ArrayList<Room> roomsSelected;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +58,14 @@ public class PriceActivity extends AppCompatActivity {
         ArrayList<Integer> selectedRoomsId = getIntent().getIntegerArrayListExtra("selectedRoomsId");
         int roomCount = selectedRoomsId.size();
         s += "You have selected " + roomCount + " " + roomType + "(s).\n";
-        for(int selectedRoomId : selectedRoomsId) { s += "Room: " + selectedRoomId + " "; }
+
+        // Retrieve selected rooms
+        RoomViewModel model = new RoomViewModel(this.getApplication());
+        roomsSelected = new ArrayList<>();
+        for(int selectedRoomId : selectedRoomsId) {
+            roomsSelected.add(model.getRoom(selectedRoomId));
+            s += "Room: " + selectedRoomId + " ";
+        }
         s += "\n";
         priceTxt.setText(s);
 
@@ -86,9 +102,10 @@ public class PriceActivity extends AppCompatActivity {
             DatePickerDialog datePickerDialog = new DatePickerDialog (
                     PriceActivity.this, setListener, thisYear, thisMonth, thisDay);
             // Available from today to 240 days after
-            datePickerDialog.getDatePicker().setMinDate(calendar.getTimeInMillis());
-            calendar.add(Calendar.DATE, 240);
-            datePickerDialog.getDatePicker().setMaxDate(calendar.getTimeInMillis());
+            Calendar calendarTemp = Calendar.getInstance();
+            datePickerDialog.getDatePicker().setMinDate(calendarTemp.getTimeInMillis());
+            calendarTemp.add(Calendar.DATE, 180);
+            datePickerDialog.getDatePicker().setMaxDate(calendarTemp.getTimeInMillis());
             datePickerDialog.show();
         });
 
@@ -96,28 +113,52 @@ public class PriceActivity extends AppCompatActivity {
         btnPrice = findViewById(R.id.price_btn);
         btnConfirm = findViewById(R.id.price_btn_confirm);
         btnPrice.setOnClickListener(v -> {
-            if (getFromDays() < getToDays()) {
-                days = getToDays() - getFromDays();
-            } else {
-                days = getFromDays() - getToDays() + 365;
-            }
+            String s2 = s;
+            days = (getFromDays() < getToDays()) ?
+                    getToDays() - getFromDays() : getToDays() - getFromDays() + 365;
 
             pc = new PriceCalculator();
-            int peoplePrice = pc.calPeoplePrice(getPeopleCount());
-            int roomPrice = pc.calRoomPrice(roomType, days);
+            peoplePrice = pc.calPeoplePrice(getPeopleCount());
+            roomPrice = pc.calRoomPrice(roomType, days);
             totalPrice = peoplePrice + roomPrice;
 
-            s += "The total price is: $" + totalPrice;
-            priceTxt.setText(s);
+            s2 += "The total price is: $" + totalPrice;
+            priceTxt.setText(s2);
 
             btnConfirm.setVisibility(View.VISIBLE);
         });
 
         btnConfirm.setOnClickListener(v -> {
-            Intent intent = new Intent(PriceActivity.this, ReservationActivity.class);
+            // Get userId from session
+            Session session = new Session(getApplicationContext());
+            String username = session.getUsername();
+            UsersRepository repository = new UsersRepository(getApplication());
+            int userId = repository.getUser(username).getId();
+
+            // Set room state
+            for (Room roomSelected : roomsSelected) {
+                model.bookRoomById(roomSelected.getId(), userId);
+            }
+            Intent intent = new Intent(PriceActivity.this, InvoiceActivity.class);
+            intent.putExtra("peopleCount", getPeopleCount());
+            intent.putExtra("peoplePrice", peoplePrice);
+            intent.putExtra("roomPrice", roomPrice);
+            intent.putExtra("totalPrice", totalPrice);
+            intent.putExtra("date", date);
             startActivity(intent);
         });
-    }
+    } // End OnCreate
+
+    DatePickerDialog.OnDateSetListener setListener = new DatePickerDialog.OnDateSetListener() {
+        @Override
+        public void onDateSet(DatePicker view, int year, int month, int day) {
+            month = month + 1;
+            date = month + "/" + day + "/" + year;
+            etDate.setText(date);
+            Calendar calendar = new GregorianCalendar(year, month - 1, day);
+            setToDays(calendar.get(Calendar.DAY_OF_YEAR));
+        }
+    };
 
     public int getPeopleCount() {
         return peopleCount;
@@ -143,14 +184,4 @@ public class PriceActivity extends AppCompatActivity {
         this.toDays = toDays;
     }
 
-    DatePickerDialog.OnDateSetListener setListener = new DatePickerDialog.OnDateSetListener() {
-        @Override
-        public void onDateSet(DatePicker view, int year, int month, int day) {
-            month = month + 1;
-            String date = month + "/" + day + "/" + year;
-            etDate.setText(date);
-            Calendar calendar = new GregorianCalendar(year, month - 1, day);
-            setToDays(calendar.get(Calendar.DAY_OF_YEAR));
-        }
-    };
 }

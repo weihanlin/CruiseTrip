@@ -9,8 +9,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.cruiseTrip.R;
 import com.example.cruiseTrip.authentication.LoginActivity;
-import com.example.cruiseTrip.roomBooking.ReservationActivity;
-import com.example.cruiseTrip.roomBooking.RoomActivity;
+import com.example.cruiseTrip.database.entity.RoomService;
+import com.example.cruiseTrip.roomBooking.RoomServiceActivity;
 
 public class WelcomeActivity extends AppCompatActivity {
 
@@ -28,7 +28,7 @@ public class WelcomeActivity extends AppCompatActivity {
             }
 
             public void onFinish() {
-                Intent i = new Intent(WelcomeActivity.this, ReservationActivity.class);
+                Intent i = new Intent(WelcomeActivity.this, LoginActivity.class);
                 startActivity(i);
             }
         }.start();

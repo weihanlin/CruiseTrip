@@ -37,15 +37,15 @@ public class RegisterActivity extends AppCompatActivity {
 
         signUpBtn = findViewById(R.id.signUpBtn_register);
         signUpBtn.setOnClickListener(v -> {
-            this.username = usernameEditText.getText().toString();
-            this.password = passwordEditText.getText().toString();
-            this.email = emailEditText.getText().toString();
-            this.phoneNumber = phoneNumberEditText.getText().toString();
+            username = usernameEditText.getText().toString();
+            password = passwordEditText.getText().toString();
+            email = emailEditText.getText().toString();
+            phoneNumber = phoneNumberEditText.getText().toString();
 
             try {
                 UsersRepository usersRepository = new UsersRepository(this.getApplication());
-                newUser = new User(this.username, this.password, this.email, this.phoneNumber);
-                usersRepository.insert(newUser);
+                newUser = new User(username, password, email, phoneNumber);
+                usersRepository.insertUser(newUser);
             } catch (Exception ex) {
                 ex.printStackTrace();
             }

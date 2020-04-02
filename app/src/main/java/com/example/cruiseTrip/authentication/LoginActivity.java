@@ -1,6 +1,8 @@
 package com.example.cruiseTrip.authentication;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -67,7 +69,7 @@ public class LoginActivity extends AppCompatActivity {
     private void validate (String name, String password) {
 
         usersRepository = new UsersRepository(this.getApplication());
-        usersRepository.getAllUsers().observe(this, userList -> {
+        usersRepository.getAllUsers().observe(this, usersList -> {
             boolean identifier = false;
             if(usersList != null && !usersList.isEmpty()) {
                 for (User user : usersList) {
@@ -79,6 +81,8 @@ public class LoginActivity extends AppCompatActivity {
                 // True : jump to the destination page.
                 // False : attempts - 1. When attempts = 0, the log in button will disable
                 if (identifier) {
+                    Session session = new Session(this.getApplicationContext());
+                    session.setUsername(name);
                     Intent i = new Intent(LoginActivity.this, DestinationActivity.class);
                     startActivity(i);
                 } else {

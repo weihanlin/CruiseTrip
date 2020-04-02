@@ -9,14 +9,14 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.cruiseTrip.R;
-import com.example.cruiseTrip.adapters.GridItemAdapter;
+import com.example.cruiseTrip.adapters.RoomsAdapter;
 import com.example.cruiseTrip.database.entity.Room;
 import com.example.cruiseTrip.database.viewModel.RoomViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class RoomActivity extends AppCompatActivity {
+public class RoomArrangementActivity extends AppCompatActivity {
 
     private List<Room> rooms;
     private GridView gridViewCol;
@@ -31,7 +31,7 @@ public class RoomActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_room);
+        setContentView(R.layout.activity_rooms);
         btnViewPrice = findViewById(R.id.room_btn);
         txtWarning = findViewById(R.id.room_warning);
 
@@ -48,19 +48,19 @@ public class RoomActivity extends AppCompatActivity {
             List<Room> roomsCol = rooms.subList(i * cols, (i + 1) * cols);
 
             gridViewCol = findViewById(gridArray[i]);
-            GridItemAdapter adapter = new GridItemAdapter(RoomActivity.this, roomsCol, imgArray, roomType);
+            RoomsAdapter adapter = new RoomsAdapter(RoomArrangementActivity.this, roomsCol, imgArray, roomType);
             gridViewCol.setAdapter(adapter);
         }
 
         // set button onclick listener
         btnViewPrice.setOnClickListener(v -> {
             // get the clicked rooms id
-            // GridItemAdapter.selectedRoomsId is a static variable from GridItemAdapter class
-            selectedRoomsId = GridItemAdapter.selectedRoomsId;
+            // RoomsAdapter.selectedRoomsId is a static variable from RoomsAdapter class
+            selectedRoomsId = RoomsAdapter.selectedRoomsId;
 
             // if no rooms are clicked or selected, show the warning text, otherwise jump to the following activity
             if(!selectedRoomsId.isEmpty()) {
-                Intent intent = new Intent(RoomActivity.this, PriceActivity.class);
+                Intent intent = new Intent(RoomArrangementActivity.this, PriceActivity.class);
                 intent.putExtra("selectedRoomsId", selectedRoomsId);
                 intent.putExtra("roomType", roomType);
                 startActivity(intent);

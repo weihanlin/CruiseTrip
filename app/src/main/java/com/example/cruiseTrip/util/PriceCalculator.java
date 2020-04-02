@@ -4,10 +4,11 @@ public class PriceCalculator {
 
     private int totalPrice;
 
-    public int calPriceByTime(String roomType, int dayCount) {
+    public int calPriceByTime(String roomType, int days) {
 
         double typePrice;
-        double priceTime = 0;
+        double priceByTime = 0;
+        int dayCount = 180 - days;
 
         switch (roomType) {
             case "insideRoom":
@@ -27,17 +28,17 @@ public class PriceCalculator {
         }
 
         try {
-            priceTime = 0.1 * dayCount * dayCount + typePrice;
+            priceByTime = 0.1 * dayCount * dayCount + typePrice;
         } catch (IllegalStateException ex) {
             ex.printStackTrace();
         }
 
-        return (int)priceTime;
+        return (int)priceByTime;
     }
 
-    public int calRoomPrice(String roomType, int dayCount) {
+    public int calRoomPrice(String roomType, int days) {
 
-        totalPrice += calPriceByTime(roomType, dayCount);
+        totalPrice += calPriceByTime(roomType, days);
 
         return totalPrice;
     }

@@ -88,8 +88,8 @@ public abstract class CruiseDatabase extends RoomDatabase {
                     e.printStackTrace();
                 }
 
-                dao.insert("admin", "admin123", "1@gmail.com", "7886542234");
-                dao.insert("another", "other123", "2@gmail.com", "7884587288");
+                dao.insertUser("admin", "admin123", "1@gmail.com", "7886542234");
+                dao.insertUser("another", "other123", "2@gmail.com", "7884587288");
                 roomDao.insert(new Room(201,"conciergeRoom",1));
                 roomDao.insert(new Room(206,"insideRoom",1));
                 roomDao.insert(new Room(207,"insideRoom",1));
@@ -119,8 +119,10 @@ public abstract class CruiseDatabase extends RoomDatabase {
                 saDao.insert(new SpecialActivity(5,"Day 3",true,true,1));
                 saDao.insert(new SpecialActivity(6,"Day 4",true,true,1));
 
-                serviceDao.insert(new Service(1, "Morning Call",10.0));
-                serviceDao.insert(new Service(2, "Food Delivery",10.3));
+                serviceDao.insert(new Service(1, "Morning Call",0));
+                serviceDao.insert(new Service(2, "Food Delivery",5));
+                serviceDao.insert(new Service(3, "Chill Spa",70));
+                serviceDao.insert(new Service(4, "Senses Spa & Salon",80));
                 roomServiceDao.insert(new RoomService(1,201));
 //                reservationDao.insert(new Reservation(1,1));
 

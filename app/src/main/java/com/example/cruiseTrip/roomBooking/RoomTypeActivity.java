@@ -11,14 +11,14 @@ import com.example.cruiseTrip.R;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ReservationActivity extends AppCompatActivity {
+public class RoomTypeActivity extends AppCompatActivity {
 
     private Map<String, LinearLayout> roomsType;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_reservation);
+        setContentView(R.layout.activity_room_type);
 
         roomsType = new HashMap<>();
         roomsType.put("insideRoom", findViewById(R.id.insideRoom));
@@ -28,7 +28,7 @@ public class ReservationActivity extends AppCompatActivity {
 
         roomsType.forEach((s, linearLayout) -> {
             linearLayout.setOnClickListener(v -> {
-                Intent i = new Intent(ReservationActivity.this, RoomActivity.class);
+                Intent i = new Intent(RoomTypeActivity.this, RoomArrangementActivity.class);
                 i.putExtra("roomType", s);
                 startActivity(i);
             });

@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-public class GridItemAdapter extends BaseAdapter {
+public class RoomsAdapter extends BaseAdapter {
     private List<Room> rooms;
     private Context context;
     private LayoutInflater inflater;
@@ -27,7 +27,7 @@ public class GridItemAdapter extends BaseAdapter {
     private AtomicBoolean indicator;
     public static ArrayList<Integer> selectedRoomsId;
 
-    public GridItemAdapter(Context context, List<Room> rooms, int[] imgArray, String roomType) {
+    public RoomsAdapter(Context context, List<Room> rooms, int[] imgArray, String roomType) {
         this.context = context;
         this.rooms = rooms;
         this.imgNormal = imgArray[0];

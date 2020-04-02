@@ -26,10 +26,8 @@ public class LoginActivity extends AppCompatActivity {
     private Button jumpBtn;
     private TextView info;
     private TextView title;
-    private UsersRepository usersRepository;
 
     private int counter = 5;
-    private List<User> usersList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,8 +48,25 @@ public class LoginActivity extends AppCompatActivity {
         }
 
         loginButton.setOnClickListener(v -> {
+            String username = usernameEditText.getText().toString();
+            String password = passwordEditText.getText().toString();
             // Validating
-            validate(usernameEditText.getText().toString(), passwordEditText.getText().toString());
+            Validation validation = new Validation(getApplication());
+            boolean identifier = validation.validate(username, password);
+
+            // True : jump to the destination page.
+            // False : attempts - 1. When attempts = 0, the log in button will be disabled
+            if (identifier) {
+                Intent i = new Intent(LoginActivity.this, DestinationActivity.class);
+                startActivity(i);
+            } else {
+                counter--;
+                info.setText( "Your username or password is not correct, please try again. \n" +
+                        "No. of attempts remaining: " + counter);
+                if (counter == 0) {
+                    loginButton.setEnabled(false);
+                }
+            }
         });
 
         registerButton.setOnClickListener(v -> {
@@ -62,38 +77,6 @@ public class LoginActivity extends AppCompatActivity {
         jumpBtn.setOnClickListener(v -> {
             Intent i = new Intent(LoginActivity.this, DestinationActivity.class);
             startActivity(i);
-        });
-    }
-
-    // Validate the username and password
-    private void validate (String name, String password) {
-
-        usersRepository = new UsersRepository(this.getApplication());
-        usersRepository.getAllUsers().observe(this, usersList -> {
-            boolean identifier = false;
-            if(usersList != null && !usersList.isEmpty()) {
-                for (User user : usersList) {
-                    String userName = user.getName();
-                    String userPassword = user.getPassword();
-                    if (name.equals(userName) && password.equals(userPassword))
-                        identifier = true;
-                }
-                // True : jump to the destination page.
-                // False : attempts - 1. When attempts = 0, the log in button will disable
-                if (identifier) {
-                    Session session = new Session(this.getApplicationContext());
-                    session.setUsername(name);
-                    Intent i = new Intent(LoginActivity.this, DestinationActivity.class);
-                    startActivity(i);
-                } else {
-                    counter--;
-                    info.setText( "Your username or password is not correct, please try again. \n" +
-                            "No. of attempts remaining: " + counter);
-                    if (counter == 0) {
-                        loginButton.setEnabled(false);
-                    }
-                }
-            }
         });
     }
 }

@@ -11,12 +11,19 @@ public class Session {
         prefs = context.getSharedPreferences("session", Context.MODE_PRIVATE);
     }
 
+    public void setUserId(int userId) {
+        prefs.edit().putInt("user_id", userId).commit();
+    }
+
+    public int getUserId() {
+        return prefs.getInt("user_id",0);
+    }
+
     public void setUsername(String username) {
         prefs.edit().putString("username", username).commit();
     }
 
     public String getUsername() {
-        String username = prefs.getString("username","");
-        return username;
+        return prefs.getString("username","");
     }
 }

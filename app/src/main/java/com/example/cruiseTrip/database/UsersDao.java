@@ -23,7 +23,7 @@ public interface UsersDao {
     void deleteAll();
 
     @Query("SELECT * FROM User")
-    LiveData<List<User>> getAllUsers();
+    List<User> getAllUsers();
 
     @Query("SELECT * FROM User WHERE name = :name")
     User getUser(String name);

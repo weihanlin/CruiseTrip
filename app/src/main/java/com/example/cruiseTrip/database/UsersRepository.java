@@ -16,7 +16,6 @@ public class UsersRepository {
     private RoomDao roomDao;
     private ReservationDao reservationDao;
     private RoomServiceDao roomServiceDao;
-    private LiveData<List<User>> allUsers;
     private CruiseDatabase db;
 
     public UsersRepository(Application application) {
@@ -27,12 +26,11 @@ public class UsersRepository {
         this.usersDao = db.usersDao();
     }
 
-    public LiveData<List<User>> getAllUsers() {
+    public List<User> getAllUsers() {
         return usersDao.getAllUsers();
     }
 
     public void insertUser(User user){
-        this.usersDao = db.usersDao();
         CruiseDatabase.databaseWriteExecutor.execute(()->{
             String name = user.getName();
             String password = user.getPassword();

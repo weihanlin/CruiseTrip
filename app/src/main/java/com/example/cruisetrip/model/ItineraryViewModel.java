@@ -10,6 +10,7 @@ import com.example.cruisetrip.database.ItinerariesRepository;
 import com.example.cruisetrip.database.Itinerary;
 import com.example.cruisetrip.database.SpecialActivity;
 
+import java.util.Date;
 import java.util.List;
 
 public class  ItineraryViewModel extends AndroidViewModel {
@@ -35,5 +36,8 @@ public class  ItineraryViewModel extends AndroidViewModel {
         return itinerariesRepository.getOnBoardActivities(itineraryID);
     }
 
+    public LiveData<List<SpecialActivity>> getPortAdventure(int itineraryID, Date date){
+        return itinerariesRepository.getPortCall(itineraryID,date);
+    }
 
 }

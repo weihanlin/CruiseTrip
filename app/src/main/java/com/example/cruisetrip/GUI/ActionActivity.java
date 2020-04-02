@@ -1,5 +1,6 @@
 package com.example.cruisetrip.GUI;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
@@ -14,12 +15,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 
 import com.example.cruisetrip.ActivityAdapter;
+import com.example.cruisetrip.PortAdvActivity;
 import com.example.cruisetrip.model.DaysAdapter;
 import com.example.cruisetrip.model.ItineraryViewModel;
 import com.example.cruisetrip.R;
 import com.example.cruisetrip.database.SpecialActivity;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 public class ActionActivity extends AppCompatActivity {
@@ -78,7 +83,11 @@ public class ActionActivity extends AppCompatActivity {
                     listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                         @Override
                         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                            //open another activity to show the port of call
+
+                            sharedPreferences.edit().putLong("DATE", days.get(position).getStart().getTime()).apply();
+
+                            Intent i = new Intent(ActionActivity.this, PortAdvActivity.class);
+                            startActivity(i);
 
                         }
                     });

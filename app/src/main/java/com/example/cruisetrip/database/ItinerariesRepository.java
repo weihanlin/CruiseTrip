@@ -4,6 +4,7 @@ import android.app.Application;
 
 import androidx.lifecycle.LiveData;
 
+import java.util.Date;
 import java.util.List;
 
 public class ItinerariesRepository {
@@ -41,8 +42,8 @@ public class ItinerariesRepository {
     }
 
     //Query all port activities for specific itinerary
-    public LiveData<List<SpecialActivity>> getPortCall(Itinerary itinerary) {
-        return saDao.getPortCall(itinerary.getId(), false);
+    public LiveData<List<SpecialActivity>> getPortCall(int itineraryID, Date date) {
+        return saDao.getPortCall(itineraryID, false, date);
     }
 
     public LiveData<List<SpecialActivity>> getDays(int itineraryID) {

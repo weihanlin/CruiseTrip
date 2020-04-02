@@ -148,6 +148,56 @@ public abstract class CruiseDatabase extends RoomDatabase {
                 }
                 saDao.insert(days);
 
+                SpecialActivity portAdventure = new SpecialActivity(7,"Capilano Suspension Bridge",false, true, 1);
+                portAdventure.setMaxNumber(10);
+                portAdventure.setPrice(990);
+                try {
+                    portAdventure.setStart(fmt.parse("2020-05-23"));
+                }
+                catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                portAdventure.setDescription("Private Tour limit 10 people per group");
+                saDao.insert(portAdventure);
+
+                portAdventure.setId(8);
+                portAdventure.setMaxNumber(0);
+                portAdventure.setDescription("age 10 and above");
+                portAdventure.setPrice(99);
+                saDao.insert(portAdventure);
+
+                portAdventure.setId(9);
+                portAdventure.setMaxNumber(0);
+                portAdventure.setDescription("age 3 to 9");
+                portAdventure.setPrice(59);
+                saDao.insert(portAdventure);
+
+
+                portAdventure.setId(10);
+                portAdventure.setTitle("Best of Sitka");
+                portAdventure.setMaxNumber(10);
+                portAdventure.setPrice(790);
+                try {
+                    portAdventure.setStart(fmt.parse("2020-05-21"));
+                }
+                catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                portAdventure.setDescription("Private Tour limit 10 people per group");
+                saDao.insert(portAdventure);
+
+                portAdventure.setId(11);
+                portAdventure.setMaxNumber(0);
+                portAdventure.setDescription("age 10 and above");
+                portAdventure.setPrice(79);
+                saDao.insert(portAdventure);
+
+                portAdventure.setId(12);
+                portAdventure.setMaxNumber(0);
+                portAdventure.setDescription("age 3 to 9");
+                portAdventure.setPrice(64);
+                saDao.insert(portAdventure);
+
 
                 serviceDao.insert(new Service(1, "Morning Call",10.0));
                 serviceDao.insert(new Service(2, "Food Delivery",10.3));

@@ -1,6 +1,7 @@
 package com.example.cruiseTrip.adapters;
 
 import android.app.Activity;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,8 +35,10 @@ public class DaysAdapter extends ArrayAdapter {
         View rowView = inflater.inflate(R.layout.item_days,null, false);
 
         TextView title = rowView.findViewById(R.id.dayTitle);
+        TextView desc = rowView.findViewById(R.id.desc);
 
         title.setText(dayItem.get(position).getTitle());
+        desc.setText(Html.fromHtml(dayItem.get(position).getDescription(),Html.FROM_HTML_MODE_LEGACY));
 
         return rowView;
     }

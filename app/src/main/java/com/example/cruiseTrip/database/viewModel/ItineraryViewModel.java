@@ -8,6 +8,7 @@ import androidx.lifecycle.LiveData;
 
 import com.example.cruiseTrip.database.ItinerariesRepository;
 import com.example.cruiseTrip.database.entity.Itinerary;
+import com.example.cruisetrip.database.Reservation;
 import com.example.cruiseTrip.database.SpecialActivity;
 
 import java.util.List;
@@ -31,5 +32,33 @@ public class ItineraryViewModel extends AndroidViewModel {
         return itinerariesRepository.getDays(itineraryID);
     }
 
+    public LiveData<List<SpecialActivity>> getActivities(int itineraryID) {
+        return itinerariesRepository.getOnBoardActivities(itineraryID);
+    }
+
+    public LiveData<List<SpecialActivity>> getPortAdventure(int itineraryID, Date date){
+        return itinerariesRepository.getPortCall(itineraryID,date);
+    }
+
+    public void reserveActivity(int userid, int activityid){
+        Reservation reservation = new Reservation(userid, activityid);
+        itinerariesRepository.reserve(reservation);
+    }
+
+    public LiveData<List<Reservation>> getReservation(int user_id){
+        return itinerariesRepository.getReservation(user_id);
+    }
+
+    public LiveData<List<Reservation>> getReservation(){
+        return itinerariesRepository.getReservation();
+    }
+
+    public void cancelReservation(int user, int act){
+        itinerariesRepository.cancel_reserve(user, act);
+    }
+
+    public int getNumReservation(int act){
+        return itinerariesRepository.numRecordByActID(act);
+    }
 
 }

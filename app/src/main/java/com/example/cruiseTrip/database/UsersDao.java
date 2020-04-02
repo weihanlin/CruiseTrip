@@ -16,6 +16,9 @@ public interface UsersDao {
     @Query("INSERT INTO User (name, password, email, phone) VALUES (:name, :password, :email, :phone)")
     void insertUser(String name, String password, String email, String phone);
 
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    void insert(User user);
+
     @Query("DELETE FROM User")
     void deleteAll();
 

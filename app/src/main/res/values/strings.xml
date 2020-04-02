@@ -18,4 +18,11 @@
     <string name="reservation_item2">Unwind in roomy quarters adorned in a charming nautical motif, with a real porthole window—or possibly 2!</string>
     <string name="reservation_item3">These are our most spacious non-Concierge staterooms, each with a private verandah (some with partial views).</string>
     <string name="reservation_item4">Our most luxurious accommodations feature a large private verandah and premium amenities and services.</string>
+
+    <string name="thing_to_see">Things to See</string>
+
+    <string-array name="action_list">
+        <item>Itinerary</item>
+        <item>Activities</item>
+    </string-array>
 </resources>

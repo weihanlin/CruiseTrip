@@ -111,13 +111,118 @@ public abstract class CruiseDatabase extends RoomDatabase {
                 roomDao.insert(new Room(219,"verandahRoom",1));
                 roomDao.insert(new Room(220,"conciergeRoom",1));
 //                roomDao.bookRoom(201,1);
-                saDao.insert(new SpecialActivity(1,"KTV",true,true,1));
-                saDao.insert(new SpecialActivity(2,"KTV",true,true,null));
 
-                saDao.insert(new SpecialActivity(3,"Day 1",true,true,1));
-                saDao.insert(new SpecialActivity(4,"Day 2",true,true,1));
-                saDao.insert(new SpecialActivity(5,"Day 3",true,true,1));
-                saDao.insert(new SpecialActivity(6,"Day 4",true,true,1));
+                SpecialActivity onboardActivity = new SpecialActivity(1,"Amari Tasting",true,true,1);
+                onboardActivity.setDescription("Delve into a diverse menu of Italian Amari drinks as the perfect primer to this complex class of herbal spirits.");
+                saDao.insert(onboardActivity);
+
+                onboardActivity.setId(2);
+                onboardActivity.setTitle("Beer Tasting");
+                onboardActivity.setDescription("Let’s make a toast to the world’s oldest alcoholic drink—from ales and lagers to stouts, wheats and beyond!");
+                saDao.insert(onboardActivity);
+
+                onboardActivity.setId(3);
+                onboardActivity.setTitle("Chocolate & Liquor Tasting");
+                onboardActivity.setDescription("Indulge in the exquisite pairings of rich chocolates with premium Champagne and liquors—c’est magnifique!");
+                saDao.insert(onboardActivity);
+
+
+                SpecialActivity days = new SpecialActivity(4,"Day 1",true,true,1);
+                days.setDescription("<p><b>ATV Expedition</b><br/>" +
+                        "Roam the land via an ATV while soaking up stunning valley, mountain and ocean views along the ride.</p>" +
+                        "<p><b>Kayak Adventure</b><br/>" +
+                        "Paddle a 2-person wilderness kayak accompanied by a safety-certified local guide along the Hoonah waterfront.</p>" +
+                        "<p><b>Whales, Wildlife and Brown Bear Search</b><br/>" +
+                        "Take a high-speed catamaran ride while searching for orca, sea lions, seals, humpback whales, bald eagles and other Alaskan creatures.</p>");
+                try {
+                    days.setStart(fmt.parse("2020-05-21"));
+                }
+                catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                saDao.insert(days);
+
+                days.setId(5);
+                days.setTitle("Day 2");
+                days.setDescription("<p><b>Whale Park</b><br/>" +
+                        "Enjoy beautiful seaside vistas as you look for majestic humpback whales, " +
+                                "which can be spotted off the coast of Sitka in the summer.</p>" +
+                        "<p><b>Fortress of the Bear</b><br/>" +
+                        "Visit this habitat for orphaned brown bear cubs and view Alaska brown bears in a natural setting.</p>"
+                        );
+                try {
+                    days.setStart(fmt.parse("2020-05-22"));
+                }
+                catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                saDao.insert(days);
+
+                days.setId(6);
+                days.setTitle("Day 3");
+                days.setDescription("<p><b>Capilano Suspension Bridge</b><br/>" +
+                        "Designed for walking use only, this 450-footlong bridge crosses a deep " +
+                        "gorge of the Capilano River. Once across you will find a progressive series" +
+                        " of platforms that snake along the primordial forest of British Columbia. " +
+                        "Keep an eye out for birds and other wildlife that live in the woods surrounding the trails.</p>");
+                try {
+                    days.setStart(fmt.parse("2020-05-23"));
+                }
+                catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                saDao.insert(days);
+
+                SpecialActivity portAdventure = new SpecialActivity(7,"Capilano Suspension Bridge",false, true, 1);
+                portAdventure.setMaxNumber(10);
+                portAdventure.setPrice(990);
+                try {
+                    portAdventure.setStart(fmt.parse("2020-05-23"));
+                }
+                catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                portAdventure.setDescription("Private Tour limit 10 people per group");
+                saDao.insert(portAdventure);
+
+                portAdventure.setId(8);
+                portAdventure.setMaxNumber(0);
+                portAdventure.setDescription("age 10 and above");
+                portAdventure.setPrice(99);
+                saDao.insert(portAdventure);
+
+                portAdventure.setId(9);
+                portAdventure.setMaxNumber(0);
+                portAdventure.setDescription("age 3 to 9");
+                portAdventure.setPrice(59);
+                saDao.insert(portAdventure);
+
+
+                portAdventure.setId(10);
+                portAdventure.setTitle("Best of Sitka");
+                portAdventure.setMaxNumber(10);
+                portAdventure.setPrice(790);
+                try {
+                    portAdventure.setStart(fmt.parse("2020-05-21"));
+                }
+                catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                portAdventure.setDescription("Private Tour limit 10 people per group");
+                saDao.insert(portAdventure);
+
+                portAdventure.setId(11);
+                portAdventure.setMaxNumber(0);
+                portAdventure.setDescription("age 10 and above");
+                portAdventure.setPrice(79);
+                saDao.insert(portAdventure);
+
+                portAdventure.setId(12);
+                portAdventure.setMaxNumber(0);
+                portAdventure.setDescription("age 3 to 9");
+                portAdventure.setPrice(64);
+                saDao.insert(portAdventure);
+
 
                 serviceDao.insert(new Service(1, "Morning Call",0));
                 serviceDao.insert(new Service(2, "Food Delivery",5));
@@ -125,6 +230,10 @@ public abstract class CruiseDatabase extends RoomDatabase {
                 serviceDao.insert(new Service(4, "Senses Spa & Salon",80));
                 roomServiceDao.insert(new RoomService(1,201));
 //                reservationDao.insert(new Reservation(1,1));
+
+                User user = new User("Joe","123","123@sss","7781234567");
+                user.setId(1);
+                dao.insert(user);
 
                 Log.d("DATABASE","AFTER INSERT DATA");
             });
@@ -134,19 +243,6 @@ public abstract class CruiseDatabase extends RoomDatabase {
         public void onCreate(@NonNull SupportSQLiteDatabase db) {
             super.onCreate(db);
 
-//            Log.d("DATABASE","CREATED sRoomDatabaseCallback");
-//
-//            databaseWriteExecutor.execute(()->{
-//                UsersDao dao = INSTANCE.usersDao();
-//                dao.deleteAll();
-//
-//                User user = new User("John");
-//                dao.insert(user);
-//                user = new User("Wick");
-//                dao.insert(user);
-//
-//                Log.d("DATABASE","AFTER INSERT DATA");
-//            });
         }
     };
 }

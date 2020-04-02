@@ -24,4 +24,11 @@ public interface ReservationDao {
 
     @Query("SELECT * FROM Reservation WHERE user_id = :user_id")
     LiveData<List<Reservation>> getReservationByUserID(int user_id);
+
+    @Query("DELETE FROM Reservation WHERE user_id =:user_id AND activity_id = :activity_id")
+    void delete(int user_id, int activity_id);
+
+    @Query("SELECT * FROM Reservation WHERE activity_id = :activity_id")
+    LiveData<List<Reservation>> getRecordByActID(int activity_id);
+
 }

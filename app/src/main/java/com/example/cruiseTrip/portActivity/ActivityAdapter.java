@@ -13,7 +13,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.cruiseTrip.R;
+import com.example.cruiseTrip.authentication.Session;
 import com.example.cruiseTrip.database.SpecialActivity;
+import com.example.cruiseTrip.database.UsersRepository;
 import com.example.cruiseTrip.database.entity.Reservation;
 import com.example.cruiseTrip.database.viewModel.ItineraryViewModel;
 
@@ -30,7 +32,6 @@ public class ActivityAdapter extends ArrayAdapter {
     public ActivityAdapter(Activity context, List<SpecialActivity> item, List<Reservation> reservations){
         super(context, R.layout.activities_list,item);
         this.actityItems = item;
-
         this.context = context;
 
 //        this.sharedPreferences = context.getSharedPreferences("SelectPref", MODE_PRIVATE);
@@ -57,8 +58,10 @@ public class ActivityAdapter extends ArrayAdapter {
         final int activity_id = actityItems.get(position).getId();
 
         //TODO: fake date user id
-        final int userId = 1;
-
+        Session session = new Session(context.getApplicationContext());
+        String username = session.getUsername();
+        UsersRepository usersRepository = new UsersRepository(context.getApplication());
+        int userId = usersRepository.getUser(username).getId();
 
         int count = 0;
 
@@ -77,7 +80,7 @@ public class ActivityAdapter extends ArrayAdapter {
             @Override
             public void onClick(View v) {
                 //TODO: or check session
-                if(userId  == 0){
+                if(username.equals("")){
                     Toast.makeText(context,"You need to log in first", Toast.LENGTH_LONG).show();
                     return;
                 }

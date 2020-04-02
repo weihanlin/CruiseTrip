@@ -16,13 +16,12 @@ import androidx.lifecycle.Observer;
 
 import com.example.cruiseTrip.ActivityAdapter;
 import com.example.cruiseTrip.PortAdvActivity;
-import com.example.cruiseTrip.database.Reservation;
-import com.example.cruiseTrip.adapters.DaysAdapter;
-import com.example.cruiseTrip.database.viewModel.ItineraryViewModel;
 import com.example.cruiseTrip.R;
+import com.example.cruiseTrip.adapters.DaysAdapter;
 import com.example.cruiseTrip.database.SpecialActivity;
+import com.example.cruiseTrip.database.entity.Reservation;
+import com.example.cruiseTrip.database.viewModel.ItineraryViewModel;
 import com.example.cruiseTrip.roomBooking.RoomTypeActivity;
-
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,8 +36,8 @@ public class ActionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_action);
 
-        roomBookingBtn = findViewById(R.id.action_roomBooking_btn);
-        viewActivityBtn = findViewById(R.id.action_activity_btn);
+        roomBookingBtn = findViewById(R.id.bookRoomBtn);
+//        viewActivityBtn = findViewById(R.id.action_activity_btn);
 
         roomBookingBtn.setOnClickListener(v -> {
             Intent intent = new Intent(ActionActivity.this, RoomTypeActivity.class);

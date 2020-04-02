@@ -7,10 +7,11 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
 import com.example.cruiseTrip.database.ItinerariesRepository;
-import com.example.cruiseTrip.database.entity.Itinerary;
-import com.example.cruisetrip.database.Reservation;
 import com.example.cruiseTrip.database.SpecialActivity;
+import com.example.cruiseTrip.database.entity.Itinerary;
+import com.example.cruiseTrip.database.entity.Reservation;
 
+import java.util.Date;
 import java.util.List;
 
 public class ItineraryViewModel extends AndroidViewModel {

@@ -5,7 +5,9 @@ import android.app.Application;
 import androidx.lifecycle.LiveData;
 
 import com.example.cruiseTrip.database.entity.Itinerary;
+import com.example.cruiseTrip.database.entity.Reservation;
 
+import java.util.Date;
 import java.util.List;
 
 public class ItinerariesRepository {

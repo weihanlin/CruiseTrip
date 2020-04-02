@@ -11,12 +11,14 @@ public class ItinerariesRepository {
     ItinerariesDao itinerariesDao;
     RoomDao roomDao;
     SADao saDao;
+    ReservationDao reservationDao;
 
     public ItinerariesRepository(Application application){
         CruiseDatabase db = CruiseDatabase.getDatabase(application);
         itinerariesDao = db.itinerariesDao();
         roomDao = db.roomDao();
         saDao = db.saDao();
+        reservationDao = db.reservationDao();
     }
 
     public void insert(final Itinerary itinerary){
@@ -50,4 +52,35 @@ public class ItinerariesRepository {
         return saDao.getDays(itineraryID);
     }
 
+    public void reserve(final Reservation reservation){
+        CruiseDatabase.databaseWriteExecutor.execute(() -> {
+            reservationDao.insert(reservation);
+        });
+    }
+
+    public LiveData<List<Reservation>> getReservation(int user_id){
+        return reservationDao.getReservationByUserID(user_id);
+    }
+
+    public LiveData<List<Reservation>> getReservation(){
+        return reservationDao.getAllReservation();
+    }
+
+
+    public void cancel_reserve(int user, int act){
+        CruiseDatabase.databaseWriteExecutor.execute(() -> {
+            reservationDao.delete(user, act);
+        });
+    }
+
+
+
+    public int numRecordByActID(int act){
+        List<Reservation> reservations = reservationDao.getRecordByActID(act).getValue();
+
+        if(reservations != null)
+            return reservations.size();
+        else
+            return 0;
+    }
 }

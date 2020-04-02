@@ -204,6 +204,10 @@ public abstract class CruiseDatabase extends RoomDatabase {
                 roomServiceDao.insert(new RoomService(1,1));
 //                reservationDao.insert(new Reservation(1,1));
 
+                User user = new User("Joe","123","123@sss","7781234567");
+                user.setId(1);
+                dao.insert(user);
+
                 Log.d("DATABASE","AFTER INSERT DATA");
             });
         }
@@ -212,19 +216,6 @@ public abstract class CruiseDatabase extends RoomDatabase {
         public void onCreate(@NonNull SupportSQLiteDatabase db) {
             super.onCreate(db);
 
-//            Log.d("DATABASE","CREATED sRoomDatabaseCallback");
-//
-//            databaseWriteExecutor.execute(()->{
-//                UsersDao dao = INSTANCE.usersDao();
-//                dao.deleteAll();
-//
-//                User user = new User("John");
-//                dao.insert(user);
-//                user = new User("Wick");
-//                dao.insert(user);
-//
-//                Log.d("DATABASE","AFTER INSERT DATA");
-//            });
         }
     };
 }

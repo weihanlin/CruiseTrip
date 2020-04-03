@@ -1,8 +1,6 @@
 package com.example.cruiseTrip.authentication;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -12,10 +10,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.cruiseTrip.ui.DestinationActivity;
 import com.example.cruiseTrip.R;
-import com.example.cruiseTrip.database.entity.User;
-import com.example.cruiseTrip.database.UsersRepository;
-
-import java.util.List;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -50,9 +44,10 @@ public class LoginActivity extends AppCompatActivity {
         loginButton.setOnClickListener(v -> {
             String username = usernameEditText.getText().toString();
             String password = passwordEditText.getText().toString();
+
             // Validating
             Validation validation = new Validation(getApplication());
-            boolean identifier = validation.validate(username, password);
+            boolean identifier = validation.validateLogin(username, password);
 
             // True : jump to the destination page.
             // False : attempts - 1. When attempts = 0, the log in button will be disabled

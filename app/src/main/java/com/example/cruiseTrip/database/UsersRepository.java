@@ -27,6 +27,7 @@ public class UsersRepository {
     }
 
     public List<User> getAllUsers() {
+        this.usersDao = db.usersDao();
         return usersDao.getAllUsers();
     }
 

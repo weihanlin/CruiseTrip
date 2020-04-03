@@ -21,10 +21,10 @@ import java.util.List;
 public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.MyViewHolder> {
 
     private Context context;
-    private int images[];
+    private int[] images;
     private List<Service> services;
 
-    public ServicesAdapter(Context ct, int images[], List<Service> services) {
+    public ServicesAdapter(Context ct, int[] images, List<Service> services) {
         this.context = ct;
         this.images = images;
         this.services = services;
@@ -46,6 +46,7 @@ public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.MyView
 
         holder.serviceImgView.setOnClickListener(v -> {
             Intent intent = new Intent(v.getContext(), InvoiceActivity.class);
+            intent.putExtra("service_price", services.get(position).getPrice());
             v.getContext().startActivity(intent);
         });
     }

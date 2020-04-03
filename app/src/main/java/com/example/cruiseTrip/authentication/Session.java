@@ -26,4 +26,12 @@ public class Session {
     public String getUsername() {
         return prefs.getString("username","");
     }
+
+    public void setPrice(int price) {
+        prefs.edit().putInt("price", price).commit();
+    }
+
+    public int getPrice() {
+        return prefs.getInt("price",0);
+    }
 }

@@ -24,6 +24,7 @@ import com.example.cruiseTrip.database.entity.Reservation;
 import com.example.cruiseTrip.database.viewModel.ItineraryViewModel;
 import com.example.cruiseTrip.portActivity.ActivityAdapter;
 import com.example.cruiseTrip.portActivity.PortAdvActivity;
+import com.example.cruiseTrip.roomBooking.RoomBookingActivity;
 import com.example.cruiseTrip.roomBooking.RoomTypeActivity;
 
 import java.util.ArrayList;
@@ -66,10 +67,8 @@ public class ActionActivity extends AppCompatActivity {
             public void onChanged(List<SpecialActivity> specialActivities) {
                 activities.clear();
                 activities.addAll(specialActivities);
-
             }
         });
-
 
 
         final TextView titleView = findViewById(R.id.itTitle);
@@ -133,7 +132,7 @@ public class ActionActivity extends AppCompatActivity {
         });
 
         roomBookingBtn.setOnClickListener(v -> {
-            Intent intent = new Intent(ActionActivity.this, RoomTypeActivity.class);
+            Intent intent = new Intent(ActionActivity.this, RoomBookingActivity.class);
             startActivity(intent);
         });
     }

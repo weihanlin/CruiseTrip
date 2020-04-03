@@ -9,14 +9,12 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.cruiseTrip.R;
+import com.example.cruiseTrip.authentication.Session;
 
 public class InvoiceActivity extends AppCompatActivity {
 
-    private int peoplePrice;
-    private int roomPrice;
     private int totalPrice;
-    private int peopleCount;
-    private int servicePrice;
+    private int serviceCharge;
     private TextView priceTxtView;
     private Button backBtn;
     private String s;
@@ -26,16 +24,18 @@ public class InvoiceActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_invoice);
 
-        peopleCount = getIntent().getIntExtra("peopleCount", 0);
-        peoplePrice = getIntent().getIntExtra("peoplePrice",0);
-        roomPrice = getIntent().getIntExtra("roomPrice",0);
-        totalPrice = getIntent().getIntExtra("totalPrice",0);
+        serviceCharge = (int)getIntent().getDoubleExtra("service_price", 0);
+
+        Session session = new Session(getApplication());
+        totalPrice = session.getPrice();
 
         priceTxtView = findViewById(R.id.invoice_txt);
-        s = "You have " + peopleCount + " people booked in this trip.\n";
-        s += "The price for " + peopleCount + " people: $" + peoplePrice + ".\n";
-        s += "The room price: $" + roomPrice + ".\n";
-        s += "The total price: $" + totalPrice + ".\n";
+        s = "The total price is: $" + totalPrice + ";\n";
+        s += "The room service charge is: $" + serviceCharge + ";\n";
+        s += "The 15% tips charge is: $" + (int)((totalPrice + serviceCharge) * 0.15) + ";\n";
+        s += "The 7% GST charge is: $" + (int)((totalPrice + serviceCharge) * 0.07) + ";\n";
+        s += "The 5% PST charge is: $" + (int)((totalPrice + serviceCharge) * 0.05) + ";\n";
+        s += "The total price after tax is: $" + (int)((totalPrice + serviceCharge) * 1.27) + ".";
         priceTxtView.setText(s);
 
         backBtn = findViewById(R.id.invoice_btn);

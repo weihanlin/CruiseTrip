@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.cruiseTrip.R;
 import com.example.cruiseTrip.adapters.RoomsAdapter;
 import com.example.cruiseTrip.database.entity.Room;
+import com.example.cruiseTrip.database.entity.RoomService;
 import com.example.cruiseTrip.database.viewModel.RoomViewModel;
 
 import java.util.ArrayList;
@@ -22,10 +23,12 @@ public class RoomArrangementActivity extends AppCompatActivity {
     private GridView gridViewCol;
     private Button btnViewPrice;
     private TextView txtWarning;
-    private ArrayList<Integer> selectedRoomsId = new ArrayList<>();;
+    private ArrayList<Integer> selectedRoomsId = new ArrayList<>();
 
     private int[] imgArray = {R.drawable.ic_seat_normal, R.drawable.ic_seat_selected, R.drawable.ic_seat_sold, R.drawable.ic_seat_unavailable};
     private int[] gridArray = {R.id.gridItemsCol1, R.id.gridItemsCol2, R.id.gridItemsCol3, R.id.gridItemsCol4};
+    private int peopleCount;
+    private String date;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +39,8 @@ public class RoomArrangementActivity extends AppCompatActivity {
         txtWarning = findViewById(R.id.room_warning);
 
         String roomType = getIntent().getStringExtra("roomType");
+        peopleCount = getIntent().getIntExtra("peopleCount", 0);
+        date = getIntent().getStringExtra("date");
 
         // Get all rooms from database
         RoomViewModel roomViewModel = new RoomViewModel(getApplication());
@@ -60,9 +65,11 @@ public class RoomArrangementActivity extends AppCompatActivity {
 
             // if no rooms are clicked or selected, show the warning text, otherwise jump to the following activity
             if(!selectedRoomsId.isEmpty()) {
-                Intent intent = new Intent(RoomArrangementActivity.this, PriceActivity.class);
+                Intent intent = new Intent(RoomArrangementActivity.this, ConfirmBookingActivity.class);
                 intent.putExtra("selectedRoomsId", selectedRoomsId);
                 intent.putExtra("roomType", roomType);
+                intent.putExtra("peopleCount", peopleCount);
+                intent.putExtra("date", date);
                 startActivity(intent);
             } else {
                 txtWarning.setText("Please select at least one room!");

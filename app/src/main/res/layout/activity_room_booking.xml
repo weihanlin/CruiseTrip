@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@drawable/img_background_main"
-    tools:context="com.example.cruiseTrip.roomBooking.PriceActivity">
+    tools:context="com.example.cruiseTrip.roomBooking.RoomBookingActivity">
 
     <TextView
         android:layout_gravity="center"
@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
         android:textSize="26sp"
-        android:text="My booking " />
+        android:text="My Booking" />
 
     <TextView
         android:layout_marginTop="50dp"
@@ -24,8 +24,8 @@
         android:text="No. of travellers" />
 
     <Spinner
-        android:id="@+id/price_people_number"
-        android:layout_width="125dp"
+        android:id="@+id/room_people_number"
+        android:layout_width="171dp"
         android:layout_height="30dp"
         android:layout_marginStart="50dp"
         android:layout_marginTop="5dp"
@@ -50,35 +50,35 @@
         android:hint="Please pick up an available date"
         android:inputType="date" />
 
-    <TextView
-        android:id="@+id/price_txt"
-        android:layout_marginTop="50dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_width="320dp"
-        android:layout_height="wrap_content"
-        android:background="@color/roomBg"
-        android:textSize="18sp"
-        android:text="" />
+<!--    <TextView-->
+<!--        android:id="@+id/price_txt"-->
+<!--        android:layout_marginTop="50dp"-->
+<!--        android:layout_gravity="center_horizontal"-->
+<!--        android:layout_width="320dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:background="@color/roomBg"-->
+<!--        android:textSize="18sp"-->
+<!--        android:text="" />-->
 
     <Button
-        android:id="@+id/price_btn"
+        android:id="@+id/room_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAllCaps="false"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="40dp"
         android:layout_marginStart="45dp"
-        android:text="View Price" />
+        android:text="Select Rooms" />
 
-    <Button
-        android:id="@+id/price_btn_confirm"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="gone"
-        android:textAllCaps="false"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="15dp"
-        android:layout_marginStart="45dp"
-        android:text="Confirm" />
+<!--    <Button-->
+<!--        android:id="@+id/price_btn_confirm"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:visibility="gone"-->
+<!--        android:textAllCaps="false"-->
+<!--        android:layout_marginTop="10dp"-->
+<!--        android:layout_marginBottom="15dp"-->
+<!--        android:layout_marginStart="45dp"-->
+<!--        android:text="Confirm" />-->
 
 
 </LinearLayout>

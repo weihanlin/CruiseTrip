@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
     android:background="@drawable/img_background_main"
     tools:context="com.example.cruiseTrip.roomBooking.RoomServiceActivity">
@@ -16,11 +16,24 @@
         android:textSize="20sp"
         android:text="How about our room services?" />
 
+    <Button
+        android:id="@+id/service_no"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="15dp"
+        android:layout_marginStart="50dp"
+        android:textAllCaps="false"
+        android:text="No thanks!" />
+
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_marginTop="20dp"
         android:id="@+id/roomService_recycle"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:listitem="@layout/item_service" />
+        android:layout_marginTop="20dp"
+        tools:listitem="@layout/item_service">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+
 
 </LinearLayout>

@@ -1,6 +1,5 @@
 package com.example.cruiseTrip.portActivity;
 
-import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
 
@@ -9,11 +8,13 @@ public class PortAdventure {
     private boolean privateTour = false;
     private ArrayList<String> ageGroup;
     private ArrayList<Double> price;
+    private ArrayList<Integer> idGroup;
 
     public PortAdventure(String title){
         this.title = title;
         this.ageGroup = new ArrayList<>();
         this.price = new ArrayList<>();
+        this.idGroup = new ArrayList<>();
     }
 
     public String getTitle() {
@@ -47,5 +48,9 @@ public class PortAdventure {
     public void addPrice(Double price) {
         this.price.add(price);
     }
+
+    public void addId(int id) { this.idGroup.add(id); }
+
+    public ArrayList<Integer> getID() { return this.idGroup; }
 
 }

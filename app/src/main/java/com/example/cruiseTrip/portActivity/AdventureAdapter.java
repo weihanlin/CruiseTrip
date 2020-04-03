@@ -1,6 +1,9 @@
 package com.example.cruiseTrip.portActivity;
 
+import android.app.Activity;
+import android.app.Application;
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 
 import com.example.cruiseTrip.R;
+import com.example.cruiseTrip.database.viewModel.ItineraryViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,10 +27,14 @@ public class AdventureAdapter extends RecyclerView.Adapter<AdventureAdapter.Adve
     private Context context;
     private final LayoutInflater layoutInflater;
     private List<PortAdventure> portAdventures;
+    private ItineraryViewModel itineraryViewModel;
+    private int userId;
 
-    AdventureAdapter(Context context){
+    AdventureAdapter(Context context, ItineraryViewModel itineraryViewModel, int userId){
         this.context = context;
         this.layoutInflater = LayoutInflater.from(context);
+        this.itineraryViewModel = itineraryViewModel;
+        this.userId = userId;
     }
 
     @Override
@@ -37,6 +45,7 @@ public class AdventureAdapter extends RecyclerView.Adapter<AdventureAdapter.Adve
 
             ArrayList<String> groups = portAdventures.get(position).getAgeGroup();
             ArrayList<Double> prices = portAdventures.get(position).getPrice();
+            final ArrayList<Integer> ids = portAdventures.get(position).getID();
 
             holder.submit.setEnabled(false);
 
@@ -103,6 +112,7 @@ public class AdventureAdapter extends RecyclerView.Adapter<AdventureAdapter.Adve
                     double total = 0;
                     if(holder.check_pri.isChecked()){
                         holder.total_pri.setText(holder.price_pri.getText());
+                        holder.submit.setEnabled(true);
                         return;
                     }
 
@@ -125,10 +135,44 @@ public class AdventureAdapter extends RecyclerView.Adapter<AdventureAdapter.Adve
                 }
             });
 
+
+            holder.submit.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    int num = 0;
+
+                    if(holder.check_pri.isChecked()){
+                        itineraryViewModel.reserveActivity(userId, ids.get(0));
+                        ((Activity)context).finish();
+                    }
+
+                    if(holder.check_adult.isChecked()){
+                        String value = holder.num_adult.getText().toString();
+                        if(value.trim().length()>0 && !value.equals("0")) {
+                            Log.d("?????", "onClick: "+ value);
+                            num = Integer.valueOf(value);
+                            itineraryViewModel.reserveActivity(userId, ids.get(1), num);
+                        }
+                    }
+                    if(holder.check_kid.isChecked()){
+                        String value = holder.num_kid.getText().toString();
+                        if(value.trim().length()>0 && !value.equals("0")) {
+                            num = Integer.valueOf(value);
+                            itineraryViewModel.reserveActivity(userId, ids.get(2), num);
+                        }
+                    }
+                    ((Activity)context).finish();
+
+                }
+            });
+
         }
         else {
             holder.title.setText("NO DATA");
         }
+
+
 
 
     }

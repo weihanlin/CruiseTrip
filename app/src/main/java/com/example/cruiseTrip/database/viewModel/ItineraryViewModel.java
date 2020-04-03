@@ -46,6 +46,12 @@ public class ItineraryViewModel extends AndroidViewModel {
         itinerariesRepository.reserve(reservation);
     }
 
+    public void reserveActivity(int userid, int activityid, int num){
+        Reservation reservation = new Reservation(userid, activityid);
+        reservation.setNumberPeople(num);
+        itinerariesRepository.reserve(reservation);
+    }
+
     public LiveData<List<Reservation>> getReservation(int user_id){
         return itinerariesRepository.getReservation(user_id);
     }

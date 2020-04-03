@@ -9,7 +9,9 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import com.example.cruiseTrip.R;
+import com.example.cruiseTrip.authentication.Session;
 import com.example.cruiseTrip.database.SpecialActivity;
+import com.example.cruiseTrip.database.UsersRepository;
 import com.example.cruiseTrip.database.viewModel.ItineraryViewModel;
 
 import java.text.ParseException;
@@ -24,13 +26,23 @@ public class PortAdvActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_port_adv);
+        ItineraryViewModel itineraryViewModel = new ItineraryViewModel(this.getApplication());
+
+        Session session = new Session(this);
+        String username = session.getUsername();
+        UsersRepository usersRepository = new UsersRepository(this.getApplication());
+
+        int userId = 0;
+
+        if(usersRepository.getUser(username) != null)
+            userId = usersRepository.getUser(username).getId();
 
         RecyclerView recyclerView = findViewById(R.id.adv_list);
-        AdventureAdapter adventureAdapter = new AdventureAdapter(this);
+        AdventureAdapter adventureAdapter = new AdventureAdapter(this, itineraryViewModel, userId);
         recyclerView.setAdapter(adventureAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        ItineraryViewModel itineraryViewModel = new ItineraryViewModel(this.getApplication());
+
 
         SharedPreferences sharedPreferences = this.getSharedPreferences("SelectPref", MODE_PRIVATE);
         final int selItin = sharedPreferences.getInt("SELIT",1);
@@ -60,6 +72,7 @@ public class PortAdvActivity extends AppCompatActivity {
                             found = true;
                             adventures.get(j).addAgeGroup(sp.getDescription());
                             adventures.get(j).addPrice(sp.getPrice());
+                            adventures.get(j).addId(sp.getId());
                             break;
                         }
                     }
@@ -67,6 +80,7 @@ public class PortAdvActivity extends AppCompatActivity {
                         PortAdventure portAdventure = new PortAdventure(sp.getTitle());
                         portAdventure.addPrice(sp.getPrice());
                         portAdventure.addAgeGroup(sp.getDescription());
+                        portAdventure.addId(sp.getId());
                         adventures.add(portAdventure);
                     }
                 }

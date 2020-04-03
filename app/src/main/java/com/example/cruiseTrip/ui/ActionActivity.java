@@ -10,13 +10,16 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 
 import com.example.cruiseTrip.R;
 import com.example.cruiseTrip.adapters.DaysAdapter;
+import com.example.cruiseTrip.authentication.Session;
 import com.example.cruiseTrip.database.SpecialActivity;
+import com.example.cruiseTrip.database.UsersRepository;
 import com.example.cruiseTrip.database.entity.Reservation;
 import com.example.cruiseTrip.database.viewModel.ItineraryViewModel;
 import com.example.cruiseTrip.portActivity.ActivityAdapter;
@@ -47,6 +50,10 @@ public class ActionActivity extends AppCompatActivity {
         SharedPreferences sharedPreferences = this.getSharedPreferences("SelectPref", MODE_PRIVATE);
         final int selItin = sharedPreferences.getInt("SELIT",1);
 
+        Session session = new Session(this);
+
+        String username = session.getUsername();
+
         final ArrayList<SpecialActivity> days = new ArrayList<>();
         final ArrayList<SpecialActivity> activities = new ArrayList<>();
         final ArrayList<Reservation> reservation = new ArrayList<>();
@@ -57,6 +64,7 @@ public class ActionActivity extends AppCompatActivity {
         itineraryViewModel.getActivities(selItin).observe(this, new Observer<List<SpecialActivity>>() {
             @Override
             public void onChanged(List<SpecialActivity> specialActivities) {
+                activities.clear();
                 activities.addAll(specialActivities);
 
             }
@@ -93,11 +101,17 @@ public class ActionActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if(position == 0){
+
                     listView.setAdapter(adapter);
 
                     listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                         @Override
                         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                            if(username.equals("")){
+                                Toast.makeText(getApplicationContext(),"You need to log in first", Toast.LENGTH_LONG).show();
+                                return;
+                            }
 
                             sharedPreferences.edit().putLong("DATE", days.get(position).getStart().getTime()).apply();
 
@@ -123,4 +137,5 @@ public class ActionActivity extends AppCompatActivity {
             startActivity(intent);
         });
     }
+
 }

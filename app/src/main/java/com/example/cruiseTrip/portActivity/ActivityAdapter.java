@@ -28,6 +28,7 @@ public class ActivityAdapter extends ArrayAdapter {
     private final List<SpecialActivity> actityItems;
     private final List<Reservation> reservations;
     private ItineraryViewModel itineraryViewModel;
+    private int userId = 0;
 
     public ActivityAdapter(Activity context, List<SpecialActivity> item, List<Reservation> reservations){
         super(context, R.layout.activities_list,item);
@@ -62,9 +63,9 @@ public class ActivityAdapter extends ArrayAdapter {
         String username = session.getUsername();
         UsersRepository usersRepository = new UsersRepository(context.getApplication());
 
-        int userId = 0;
+
         if(usersRepository.getUser(username) != null)
-            usersRepository.getUser(username).getId();
+            userId = usersRepository.getUser(username).getId();
 
         int count = 0;
 

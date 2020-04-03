@@ -12,6 +12,7 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -144,7 +145,7 @@ public class AdventureAdapter extends RecyclerView.Adapter<AdventureAdapter.Adve
 
                     if(holder.check_pri.isChecked()){
                         itineraryViewModel.reserveActivity(userId, ids.get(0));
-                        ((Activity)context).finish();
+//                        ((Activity)context).finish();
                     }
 
                     if(holder.check_adult.isChecked()){
@@ -162,8 +163,9 @@ public class AdventureAdapter extends RecyclerView.Adapter<AdventureAdapter.Adve
                             itineraryViewModel.reserveActivity(userId, ids.get(2), num);
                         }
                     }
-                    ((Activity)context).finish();
+//                    ((Activity)context).finish();
 
+                    Toast.makeText(context,"Reservation Successful", Toast.LENGTH_LONG).show();
                 }
             });
 

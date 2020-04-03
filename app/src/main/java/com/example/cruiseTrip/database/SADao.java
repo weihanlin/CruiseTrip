@@ -28,4 +28,7 @@ public interface SADao {
 
     @Query("SELECT * FROM SpecialActivity WHERE itinerary_id = :itinerary AND title LIKE 'Day%'")
     LiveData<List<SpecialActivity>> getDays(int itinerary);
+
+    @Query("SELECT * FROM SpecialActivity WHERE id = :id")
+    SpecialActivity getSA(int id);
 }

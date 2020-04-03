@@ -9,6 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".ui.ReservationRecord"></activity>
         <activity android:name=".roomBooking.ConfirmBookingActivity" />
         <activity android:name=".portActivity.PortAdvActivity" />
         <activity android:name=".ui.InvoiceActivity" />

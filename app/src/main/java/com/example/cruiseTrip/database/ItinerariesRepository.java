@@ -69,6 +69,10 @@ public class ItinerariesRepository {
         });
     }
 
+    public SpecialActivity getSA(int act){
+        return saDao.getSA(act);
+    }
+
 
 
     public int numRecordByActID(int act){

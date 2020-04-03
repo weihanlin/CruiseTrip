@@ -21,9 +21,18 @@
         android:id="@+id/destination"
         android:layout_width="match_parent"
         android:layout_height="60dp"
+        android:layout_marginLeft="5sp"
         android:text="Alaska"
         android:textSize="30sp"
-        android:visibility="visible"/>
+        android:visibility="visible" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5sp"
+        android:layout_marginRight="5sp"
+        android:text="Your Reservation" />
 
     <View
         android:layout_width="fill_parent"

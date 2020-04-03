@@ -3,9 +3,11 @@ package com.example.cruiseTrip.adapters;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -17,6 +19,8 @@ import com.example.cruiseTrip.R;
 import com.example.cruiseTrip.database.entity.Itinerary;
 import com.example.cruiseTrip.roomBooking.RoomTypeActivity;
 import com.example.cruiseTrip.ui.ActionActivity;
+import com.example.cruiseTrip.ui.DestinationActivity;
+import com.example.cruiseTrip.ui.ReservationRecord;
 
 import java.util.List;
 
@@ -26,11 +30,13 @@ public class ItinerariesAdapter extends RecyclerView.Adapter<ItinerariesAdapter.
     private List<Itinerary> mItineraries;
     private Context context;
     private SharedPreferences sharedPreferences;
+    private int userId = 0;
 
-    public ItinerariesAdapter(Context context) {
+    public ItinerariesAdapter(Context context, int userId) {
         this.context = context;
         this.layoutInflater = LayoutInflater.from(context);
         sharedPreferences = context.getSharedPreferences("SelectPref", Context.MODE_PRIVATE);
+        this.userId = userId;
     }
 
     @NonNull
@@ -57,10 +63,24 @@ public class ItinerariesAdapter extends RecyclerView.Adapter<ItinerariesAdapter.
                 Intent i = new Intent(v.getContext(), ActionActivity.class);
                 v.getContext().startActivity(i);
             });
+
+            holder.btn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    sharedPreferences.edit().putInt("SELIT",itinerary.getId()).apply();
+                    Intent i = new Intent(v.getContext(), ReservationRecord.class);
+                    v.getContext().startActivity(i);
+                }
+            });
         }
         else{
             holder.desImg.setVisibility(View.INVISIBLE);
             holder.destination.setText("NO DATA");
+        }
+
+        Log.d("???", "userid:" + userId );
+        if(userId == 0) {
+            holder.btn.setVisibility(View.GONE);
         }
 
 
@@ -84,11 +104,13 @@ public class ItinerariesAdapter extends RecyclerView.Adapter<ItinerariesAdapter.
 
         public TextView destination;
         public ImageView desImg;
+        public Button btn;
 
         public ItineraryHolder(@NonNull View itemView) {
             super(itemView);
             destination = itemView.findViewById(R.id.destination);
             desImg = itemView.findViewById(R.id.desImg);
+            btn = itemView.findViewById(R.id.button);
         }
     }
 }

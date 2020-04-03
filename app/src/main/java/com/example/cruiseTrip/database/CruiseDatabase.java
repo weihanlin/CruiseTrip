@@ -114,16 +114,25 @@ public abstract class CruiseDatabase extends RoomDatabase {
 
                 SpecialActivity onboardActivity = new SpecialActivity(1,"Amari Tasting",true,true,1);
                 onboardActivity.setDescription("Delve into a diverse menu of Italian Amari drinks as the perfect primer to this complex class of herbal spirits.");
+                try {
+                    onboardActivity.setStart(fmt.parse("2020-05-21"));
+                }catch (ParseException e){}
                 saDao.insert(onboardActivity);
 
                 onboardActivity.setId(2);
                 onboardActivity.setTitle("Beer Tasting");
                 onboardActivity.setDescription("Let’s make a toast to the world’s oldest alcoholic drink—from ales and lagers to stouts, wheats and beyond!");
+                try {
+                    onboardActivity.setStart(fmt.parse("2020-05-20"));
+                }catch (ParseException e){}
                 saDao.insert(onboardActivity);
 
                 onboardActivity.setId(3);
                 onboardActivity.setTitle("Chocolate & Liquor Tasting");
                 onboardActivity.setDescription("Indulge in the exquisite pairings of rich chocolates with premium Champagne and liquors—c’est magnifique!");
+                try {
+                    onboardActivity.setStart(fmt.parse("2020-05-22"));
+                }catch (ParseException e){}
                 saDao.insert(onboardActivity);
 
 
@@ -231,9 +240,9 @@ public abstract class CruiseDatabase extends RoomDatabase {
                 roomServiceDao.insert(new RoomService(1,201));
 //                reservationDao.insert(new Reservation(1,1));
 
-                User user = new User("Joe","123","123@sss","7781234567");
-                user.setId(1);
-                dao.insert(user);
+//                User user = new User("Joe","123","123@sss","7781234567");
+//                user.setId(1);
+//                dao.insert(user);
 
                 Log.d("DATABASE","AFTER INSERT DATA");
             });

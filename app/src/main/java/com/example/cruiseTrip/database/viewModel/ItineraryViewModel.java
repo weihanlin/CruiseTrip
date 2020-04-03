@@ -68,4 +68,9 @@ public class ItineraryViewModel extends AndroidViewModel {
         return itinerariesRepository.numRecordByActID(act);
     }
 
+
+    public SpecialActivity getSpecialActivity(int act_id){
+        return itinerariesRepository.getSA(act_id);
+    }
+
 }

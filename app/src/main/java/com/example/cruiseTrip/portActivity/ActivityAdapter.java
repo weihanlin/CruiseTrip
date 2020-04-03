@@ -61,7 +61,10 @@ public class ActivityAdapter extends ArrayAdapter {
         Session session = new Session(context.getApplicationContext());
         String username = session.getUsername();
         UsersRepository usersRepository = new UsersRepository(context.getApplication());
-        int userId = usersRepository.getUser(username).getId();
+
+        int userId = 0;
+        if(usersRepository.getUser(username) != null)
+            usersRepository.getUser(username).getId();
 
         int count = 0;
 

@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.cruiseTrip.R;
 import com.example.cruiseTrip.authentication.LoginActivity;
+import com.example.cruiseTrip.authentication.Session;
 import com.example.cruiseTrip.database.entity.RoomService;
 import com.example.cruiseTrip.roomBooking.RoomServiceActivity;
 
@@ -18,8 +19,12 @@ public class WelcomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
+        Session session = new Session(this);
+        session.setUsername("");
+        session.setUserId(0);
+        session.setPrice(0);
 
-        new CountDownTimer(1000, 1000) {
+        new CountDownTimer(3000, 1000) {
 
             TextView textView = findViewById(R.id.loading);
 

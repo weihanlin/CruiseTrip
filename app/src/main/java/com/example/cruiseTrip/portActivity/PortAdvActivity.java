@@ -34,7 +34,7 @@ public class PortAdvActivity extends AppCompatActivity {
 
         int userId = 0;
 
-        if(usersRepository.getUser(username) != null)
+        if(!usersRepository.getUser(username).equals(""))
             userId = usersRepository.getUser(username).getId();
 
         RecyclerView recyclerView = findViewById(R.id.adv_list);

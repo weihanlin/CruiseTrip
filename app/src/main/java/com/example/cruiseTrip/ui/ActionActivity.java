@@ -37,11 +37,18 @@ public class ActionActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Session session = new Session(this);
+        String username = session.getUsername();
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_action);
 
         roomBookingBtn = findViewById(R.id.bookRoomBtn);
 //        viewActivityBtn = findViewById(R.id.action_activity_btn);
+
+        if(username.equals("")) {
+            roomBookingBtn.setVisibility(View.INVISIBLE);
+        }
 
         roomBookingBtn.setOnClickListener(v -> {
             Intent intent = new Intent(ActionActivity.this, RoomTypeActivity.class);
@@ -50,10 +57,6 @@ public class ActionActivity extends AppCompatActivity {
 
         SharedPreferences sharedPreferences = this.getSharedPreferences("SelectPref", MODE_PRIVATE);
         final int selItin = sharedPreferences.getInt("SELIT",1);
-
-        Session session = new Session(this);
-
-        String username = session.getUsername();
 
         final ArrayList<SpecialActivity> days = new ArrayList<>();
         final ArrayList<SpecialActivity> activities = new ArrayList<>();
